@@ -123,7 +123,7 @@ Sebuah platform pembelajaran online yang dirancang khusus untuk memfasilitasi pe
 ## 🚀 Setup & Installation
 
 ### Prerequisites
-- Node.js 18+ atau Bun runtime
+- Bun runtime
 - MySQL 8.0+
 - Git
 
@@ -557,7 +557,7 @@ Project ini menggunakan MIT License. Lihat file `LICENSE` untuk detail lengkap.
 ## 📞 Support & Contact
 
 Untuk pertanyaan, bug reports, atau feature requests:
-- 📧 Email: [your-email]
+- 📧 Email: rahmadaniasqi@gmail.com
 - 🐛 Issues: [GitHub Issues]
 - 💬 Discussions: [GitHub Discussions]
 
