@@ -17,7 +17,8 @@ export const registerSchema = z.object({
 export const addGuruSchema = z.object({
   nama: z.string().min(2),
   email: z.string().email(),
-  password: z.string().min(6)
+  password: z.string().min(6),
+  bidang: z.string().min(3)
 });
 
 export const updateUserStatusSchema = z.object({

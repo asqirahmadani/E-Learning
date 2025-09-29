@@ -1,6 +1,6 @@
 import { Elysia } from "elysia";
 import ejs from "ejs";
-import { getUsers, loginAttempts } from "../db";
+import { getUsers, loginAttempts, getKelas, query } from "../db";
 import { verifyPassword, hashPassword } from "../utils/hash";
 import { signSession } from "../utils/session";
 import { loginSchema, registerSchema, inputValidation } from "../middleware/inputValidation";
@@ -34,6 +34,33 @@ export const authRoutes = new Elysia()
     });
   })
 
+  .get('/register-guru', async ({ set, query }) => {
+    const fs = await Bun.file("views/register-guru.ejs").text();
+    set.headers["Content-Type"] = "text/html; charset=utf-8";
+    return view(fs, {
+      error: query.error ?? "",
+      message: query.message ?? "",
+      formData: query.formData ? JSON.parse(query.formData) : {}
+    });
+  })
+
+  .get('/kelas', async ({ set }) => {
+    try {
+      const kelasData = await getKelas();
+      return {
+        success: true,
+        data: kelasData
+      }
+    } catch (error) {
+      console.error("Error fetching kelas:", error);
+      set.status = 500;
+      return {
+        success: false,
+        error: "Gagal memuat data kelas"
+      }
+    }
+  })
+
   .post("/register", async ({ request, set }) => {
     const formData = await request.formData();
     const body: Record<string, string> = {};
@@ -42,21 +69,29 @@ export const authRoutes = new Elysia()
       body[key] = String(value);
     }
 
-    const parsed = registerSchema.safeParse(body);
-    if (!parsed.success) {
-      set.status = 400;
-      const errorMessage = parsed.error.issues.map((i) => i.message).join(", ");
-      
+    // Basic validation for student registration
+    const requiredFields = ['nama', 'email', 'password', 'confirmPassword'];
+    const missingFields = requiredFields.filter(field => !body[field] || !body[field].trim());
+
+    if (missingFields.length > 0) {
       set.status = 302;
-      set.headers.Location = `/register?error=${encodeURIComponent(errorMessage)}&formData=${encodeURIComponent(JSON.stringify(body))}`;
+      set.headers.Location = `/register?error=${encodeURIComponent("Mohon lengkapi semua field yang diperlukan")}&formData=${encodeURIComponent(JSON.stringify(body))}`;
       return;
     }
 
-    const { email, password, nama, confirmPassword, kelas_id } = parsed.data;
+    const { email, password, nama, confirmPassword, kelas_id } = body;
 
     if (password !== confirmPassword) {
       set.status = 302;
       set.headers.Location = `/register?error=${encodeURIComponent("Password dan konfirmasi password tidak cocok")}&formData=${encodeURIComponent(JSON.stringify(body))}`;
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      set.status = 302;
+      set.headers.Location = `/register?error=${encodeURIComponent("Format email tidak valid")}&formData=${encodeURIComponent(JSON.stringify(body))}`;
       return;
     }
 
@@ -68,13 +103,22 @@ export const authRoutes = new Elysia()
       return;
     }
 
+    // Validate class exists if provided
+    if (kelas_id && kelas_id.trim()) {
+      const kelasExists = await query("SELECT id FROM kelas WHERE id = ?", [parseInt(kelas_id)]);
+      if ((kelasExists as any[]).length === 0) {
+        set.status = 302;
+        set.headers.Location = `/register?error=${encodeURIComponent("Kelas yang dipilih tidak valid")}&formData=${encodeURIComponent(JSON.stringify(body))}`;
+        return;
+      }
+    }
+
     try {
       const passwordHash = await hashPassword(password);
       const now = new Date();
 
-      
-      const { query } = await import("../db");
-      await query(
+      // Create user
+      const result = await query(
         `INSERT INTO users (nama, email, password_hash, role, status, created_at, last_login, login_count, last_activity) 
          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
@@ -90,6 +134,17 @@ export const authRoutes = new Elysia()
         ]
       );
 
+      const userId = (result as any).insertId;
+
+      // Add student to selected class if provided
+      if (kelas_id && kelas_id.trim()) {
+        await query(
+          `INSERT INTO siswa_kelas (siswa_id, kelas_id, created_at) 
+           VALUES (?, ?, ?)`,
+          [userId, parseInt(kelas_id), now]
+        );
+      }
+
       set.status = 302;
       set.headers.Location = "/login?message=Registrasi berhasil. Silakan login.";
       return;
@@ -98,6 +153,120 @@ export const authRoutes = new Elysia()
       console.error("Registration error:", error);
       set.status = 500;
       set.headers.Location = `/register?error=${encodeURIComponent("Terjadi kesalahan server")}&formData=${encodeURIComponent(JSON.stringify(body))}`;
+      return;
+    }
+  })
+
+  .post("/register-guru", async ({ request, set }) => {
+    const formData = await request.formData();
+    const body: Record<string, string> = {};
+
+    for (const [key, value] of formData.entries()) {
+      if (key === 'kelas_ids') {
+        // Handle multiple class selection
+        if (!body[key]) body[key] = '';
+        body[key] += (body[key] ? ',' : '') + String(value);
+      } else {
+        body[key] = String(value);
+      }
+    }
+
+    // Basic validation for teacher registration
+    const requiredFields = ['nama', 'email', 'password', 'confirmPassword', 'bidang'];
+    const missingFields = requiredFields.filter(field => !body[field] || !body[field].trim());
+
+    if (missingFields.length > 0) {
+      set.status = 302;
+      set.headers.Location = `/register-guru?error=${encodeURIComponent("Mohon lengkapi semua field yang diperlukan")}&formData=${encodeURIComponent(JSON.stringify(body))}`;
+      return;
+    }
+
+    const { email, password, nama, confirmPassword, bidang, kelas_ids, wali_kelas_id } = body;
+
+    if (password !== confirmPassword) {
+      set.status = 302;
+      set.headers.Location = `/register-guru?error=${encodeURIComponent("Password dan konfirmasi password tidak cocok")}&formData=${encodeURIComponent(JSON.stringify(body))}`;
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      set.status = 302;
+      set.headers.Location = `/register-guru?error=${encodeURIComponent("Format email tidak valid")}&formData=${encodeURIComponent(JSON.stringify(body))}`;
+      return;
+    }
+
+    const users = await getUsers();
+    const existingUser = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+    if (existingUser) {
+      set.status = 302;
+      set.headers.Location = `/register-guru?error=${encodeURIComponent("Email sudah terdaftar")}&formData=${encodeURIComponent(JSON.stringify(body))}`;
+      return;
+    }
+
+    try {
+      const passwordHash = await hashPassword(password);
+      const now = new Date();
+
+      // Create teacher user
+      const result = await query(
+        `INSERT INTO users (nama, email, password_hash, role, status, created_at, last_login, login_count, last_activity, bidang) 
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          nama.trim(),
+          email.toLowerCase().trim(),
+          passwordHash,
+          "guru",
+          "active",
+          now,
+          now,
+          0,
+          now,
+          bidang.trim()
+        ]
+      );
+
+      const guruId = (result as any).insertId;
+
+      // Handle class assignments if provided
+      if (kelas_ids && kelas_ids.trim()) {
+        const kelasIdArray = kelas_ids.split(',').map(id => parseInt(id.trim())).filter(id => !isNaN(id));
+
+        for (const kelasId of kelasIdArray) {
+          // Verify class exists
+          const kelasExists = await query("SELECT id FROM kelas WHERE id = ?", [kelasId]);
+          if ((kelasExists as any[]).length > 0) {
+            // Add guru to class with their bidang as mata_pelajaran
+            await query(
+              `INSERT INTO guru_kelas (guru_id, kelas_id, mata_pelajaran) 
+               VALUES (?, ?, ?)`,
+              [guruId, kelasId, bidang.trim()]
+            );
+          }
+        }
+      }
+
+      // Handle wali kelas assignment if provided
+      if (wali_kelas_id && wali_kelas_id.trim()) {
+        const waliKelasId = parseInt(wali_kelas_id);
+        if (!isNaN(waliKelasId)) {
+          // Update the class to set this teacher as wali kelas
+          await query(
+            `UPDATE kelas SET wali_kelas_id = ? WHERE id = ?`,
+            [guruId, waliKelasId]
+          );
+        }
+      }
+
+      set.status = 302;
+      set.headers.Location = "/login?message=Registrasi guru berhasil. Silakan login.";
+      return;
+
+    } catch (error) {
+      console.error("Teacher registration error:", error);
+      set.status = 500;
+      set.headers.Location = `/register-guru?error=${encodeURIComponent("Terjadi kesalahan server")}&formData=${encodeURIComponent(JSON.stringify(body))}`;
       return;
     }
   })
@@ -147,7 +316,7 @@ export const authRoutes = new Elysia()
 
     loginAttempts.delete(key);
 
-    
+
     const { query } = await import("../db");
     await query(
       "UPDATE users SET last_login = ?, login_count = login_count + 1 WHERE id = ?",
@@ -165,7 +334,7 @@ export const authRoutes = new Elysia()
     cookie.session.set({
       value: token,
       httpOnly: true,
-      sameSite: "Lax",
+      sameSite: "lax",
       secure: false,
       maxAge: 60 * 60 * 8
     });

@@ -1,0 +1,342 @@
+E-Learning Fitur Details:
+
+1. register ✓
+2. login -> dashboard (role: kepsek, guru, siswa) ✓
+
+3. dashboard
+	
+	- kepsek (skip chart) ✓	
+		# main dashboard (ringkasan sistem, chart aktifitas):
+			/kepsek/info-dasar (GET) ✓
+				output: jumlah guru, siswa, kelas, materi
+			(chart untuk aktifitas pembelajaran) ✗
+
+		# manajemen guru (tambah guru, daftar guru, edit status / hapus guru): ✓
+			/kepsek/guru/daftar (GET) ✓
+				output: data lengkap guru
+			/kepsek/guru/tambah (POST) ✓
+				input: nama, email, password, bidang
+			/kepsek/guru/status/:guruId (PATCH) ✓
+				output: aktifkan atau nonaktifkan guru
+			/kepsek/guru/hapus/:guruId (DELETE) ✓
+				ouput: hapus guru
+
+		# manajemen siswa (daftar siswa, lihat detail tugas): ✓
+			/kepsek/siswa/daftar (GET) ✓
+				output: data lengkap siswa
+			/kepsek/siswa/tugas/:siswaId (GET) ✓
+				output: data lengkap tugas berdasarkan siswa
+
+		# manajemen materi (daftar materi, diskusi): ✓
+			/kepsek/materi/daftar (GET) ✓
+				output: data lengkap materi
+			/kepsek/kelas/diskusi-materi/:materiId (GET) ✓
+				output: data lengkap diskusi berdasarkan materi
+
+		# manajemen diskusi (daftar diskusi, tambah diskusi): ✓
+			/kepsek/kelas/diskusi (GET) ✓
+				output: data lengkap diskusi
+			/kepsek/kelas/diskusi (POST) ✓
+				input: kelas, isi
+
+	- guru
+		# dashboard
+			GET /guru/dashboard/stats
+   Output: {
+     "success": true,
+     "data": {
+       "total_materi": 15,
+       "total_siswa": 120,
+       "tugas_pending": 8,
+       "rata_nilai": 85.5
+     }
+   }
+
+   			GET /guru/dashboard/recent-activity
+   Output: {
+     "success": true,
+     "data": [
+       {
+         "title": "Materi Baru",
+         "description": "Matematika Dasar telah ditambahkan",
+         "created_at": "2024-01-15T10:30:00Z"
+       }
+     ]
+   }
+
+		# manajemen materi
+			GET /guru/materi
+   Output: {
+     "success": true,
+     "data": [
+       {
+         "id": 1,
+         "judul": "Matematika Dasar",
+         "deskripsi": "Pembelajaran dasar matematika",
+         "konten": "Konten lengkap...",
+         "created_at": "2024-01-10T09:00:00Z"
+       }
+     ]
+   }
+
+   			POST /guru/materi
+   Input: {
+     "judul": "Pembelajaran Matematika",
+     "deskripsi": "Materi dasar matematika",
+     "konten": "Konten lengkap materi..."
+   }
+   Output: {
+     "success": true,
+     "message": "Materi berhasil dibuat",
+     "data": { "id": 16 }
+   }
+
+   			PUT /guru/materi/:id
+   Input: {
+     "judul": "Judul Updated",
+     "konten": "Konten Updated"
+   }
+   Output: {
+     "success": true,
+     "message": "Materi berhasil diupdate"
+   }
+
+   			DELETE /guru/materi/:id
+   Output: {
+     "success": true,
+     "message": "Materi berhasil dihapus"
+   }
+
+		# manajemen tugas
+				GET /guru/tugas
+   Output: {
+     "success": true,
+     "data": [
+       {
+         "id": 1,
+         "judul": "Latihan Matematika 1",
+         "deskripsi": "Kerjakan soal-soal berikut...",
+         "deadline": "2024-01-20T23:59:59Z",
+         "materi_judul": "Matematika Dasar",
+         "submissions_count": 15
+       }
+     ]
+   }
+
+   			POST /guru/tugas
+   Input: {
+     "materi_id": 1,
+     "judul": "Latihan Matematika 1",
+     "deskripsi": "Kerjakan soal-soal berikut...",
+     "deadline": "2024-01-20T23:59:59Z"
+   }
+   Output: {
+     "success": true,
+     "message": "Tugas berhasil dibuat",
+     "data": { "id": 5 }
+   }
+
+   			PUT /guru/tugas/:id
+   			DELETE /guru/tugas/:id	
+
+		# penilaian
+			GET /guru/submissions/pending
+   Output: {
+     "success": true,
+     "data": [
+       {
+         "id": 123,
+         "tugas_judul": "Latihan Matematika 1",
+         "siswa_nama": "John Doe",
+         "jawaban": "Jawaban siswa...",
+         "submitted_at": "2024-01-14T15:30:00Z"
+       }
+     ]
+   }
+
+   			POST /guru/submissions/:id/grade
+   Input: { "nilai": 85 }
+   Output: {
+     "success": true,
+     "message": "Nilai berhasil diberikan"
+   }
+
+		# progress siswa
+			GET /api/guru/siswa/progress
+   Output: {
+     "success": true,
+     "data": [
+       {
+         "id": 7,
+         "nama": "John Doe",
+         "email": "john@example.com",
+         "progress": 80,
+         "rata_nilai": 85.5
+       }
+     ]
+   }
+
+		# diskusi
+			GET /api/guru/diskusi
+   Output: {
+     "success": true,
+     "data": [
+       {
+         "id": 1,
+         "user_name": "Jane Doe",
+         "isi": "Pertanyaan tentang materi...",
+         "created_at": "2024-01-14T10:30:00Z"
+       }
+     ]
+   }
+
+   POST /api/guru/diskusi/:id/reply
+   Input: { "reply": "Balasan dari guru..." }
+   Output: {
+     "success": true,
+     "message": "Balasan berhasil dikirim"
+   }
+
+
+	- siswa
+		# dashboard main
+			GET /siswa/dashboard/stats
+Output: {
+  "total_materi": 10,
+  "tugas_selesai": 5,
+  "tugas_pending": 3,
+  "rata_nilai": 85.5,
+  "progress_overall": 75
+}
+			GET /siswa/activity/recent
+Output: {
+  "data": [
+    {
+      "type": "tugas_baru",
+      "title": "Tugas Baru: Soal Latihan Bab 2",
+      "description": "Deadline: 15 Januari 2024",
+      "created_at": "2024-01-01T12:00:00.000Z"
+    }
+  ]
+}			
+
+		# materi pembelajaran
+			GET /siswa/materi
+Output: {
+  "data": [
+    {
+      "id": 1,
+      "judul": "Matematika Dasar",
+      "deskripsi": "Pelajaran matematika dasar",
+      "konten": "Konten lengkap materi...",
+      "guru_nama": "Jokowi",
+      "created_at": "2024-01-01T00:00:00.000Z"
+    }
+  ]
+}
+
+		# tugas saya
+			GET /siswa/tugas
+Output: {
+  "data": [
+    {
+      "id": 1,
+      "materi_id": 1,
+      "materi_judul": "Matematika Dasar",
+      "judul": "Soal Latihan Bab 1",
+      "deskripsi": "Kerjakan soal 1-10",
+      "deadline": "2024-01-15T23:59:59.000Z",
+      "status": "belum_dikerjakan",
+      "nilai": null,
+      "jawaban": null,
+      "submitted_at": null
+    }
+  ]
+}
+			POST /siswa/tugas/:id/submit
+Input: {
+  "jawaban": "Jawaban siswa untuk tugas ini..."
+}
+Output: {
+  "success": true,
+  "message": "Tugas berhasil dikumpulkan"
+}
+
+		# nilai saya
+			GET /siswa/nilai
+Output: {
+  "summary": {
+    "total_tugas": 8,
+    "tugas_selesai": 5,
+    "rata_nilai": 85.5
+  },
+  "detail": [
+    {
+      "tugas_id": 1,
+      "materi_judul": "Matematika Dasar",
+      "tugas_judul": "Soal Latihan Bab 1",
+      "nilai": 90,
+      "status": "selesai",
+      "feedback": "Bagus, tingkatkan lagi",
+      "submitted_at": "2024-01-10T10:00:00.000Z"
+    }
+  ]
+}
+
+		# diskusi
+			GET /siswa/diskusi/kelas
+Output: {
+  "data": [
+    {
+      "id": 1,
+      "kelas": "Kelas 1A",
+      "isi": "Diskusi tentang pelajaran hari ini",
+      "user_nama": "Guru Jokowi",
+      "user_role": "guru",
+      "created_at": "2024-01-01T10:00:00.000Z"
+    }
+  ]
+}
+			GET /siswa/diskusi/materi
+Output: {
+  "data": [
+    {
+      "id": 1,
+      "materi_id": 1,
+      "materi_judul": "Matematika Dasar",
+      "isi": "Pertanyaan tentang materi ini",
+      "user_nama": "Siswa 1",
+      "user_role": "siswa",
+      "created_at": "2024-01-01T11:00:00.000Z"
+    }
+  ]
+}
+			POST /siswa/diskusi
+Input: {
+  "type": "kelas", // atau "materi"
+  "target_id": 1, // kelas_id atau materi_id
+  "isi": "Isi diskusi dari siswa"
+}
+Output: {
+  "success": true,
+  "message": "Diskusi berhasil diposting"
+}
+
+		# progress
+			GET /siswa/progress
+Output: {
+  "overall_progress": 75,
+  "materi_progress": [
+    {
+      "materi_id": 1,
+      "judul": "Matematika Dasar",
+      "progress": 80,
+      "tugas_completed": 3,
+      "tugas_total": 4
+    }
+  ],
+  "achievement": {
+    "badges": ["First Submit", "Good Score"],
+    "points": 450
+  }
+}

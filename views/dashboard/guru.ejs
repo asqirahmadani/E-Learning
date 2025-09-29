@@ -291,6 +291,268 @@
          padding: 2rem;
          color: #666;
       }
+
+      .profile-avatar {
+         width: 60px;
+         height: 60px;
+         background: linear-gradient(135deg, #2ecc71, #27ae60);
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+         font-size: 1.5rem;
+         font-weight: bold;
+      }
+
+      .kelas-badge {
+         display: inline-block;
+         background: #2ecc71;
+         color: white;
+         padding: 0.25rem 0.5rem;
+         border-radius: 12px;
+         margin: 0.25rem;
+         font-size: 0.8rem;
+      }
+
+      .deadline-urgent {
+         border-left-color: #e74c3c !important;
+         background: #fdf2f2 !important;
+      }
+
+      .deadline-warning {
+         border-left-color: #f39c12 !important;
+         background: #fff8e1 !important;
+      }
+
+      .deadline-normal {
+         border-left-color: #27ae60 !important;
+         background: #f0fff4 !important;
+      }
+
+      .wali-kelas-badge {
+         position: absolute;
+         top: 0.5rem;
+         right: 0.5rem;
+         background: #f39c12;
+         color: white;
+         padding: 0.25rem 0.5rem;
+         border-radius: 12px;
+         font-size: 0.7rem;
+         font-weight: 600;
+      }
+
+      .class-stats {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 0.5rem;
+         margin-top: 1rem;
+         text-align: center;
+      }
+
+      .class-stat-item {
+         font-size: 1.5rem;
+         font-weight: bold;
+         color: #2ecc71;
+      }
+
+      .class-stat-label {
+         font-size: 0.8rem;
+         color: #666;
+      }
+
+      .modal-kelas-selection {
+         max-height: 400px;
+         overflow-y: auto;
+      }
+
+      .kelas-checkbox-item {
+         display: flex;
+         align-items: center;
+         margin-bottom: 0.5rem;
+         padding: 0.75rem;
+         border: 2px solid #e1e5e9;
+         border-radius: 8px;
+         cursor: pointer;
+         transition: all 0.3s;
+      }
+
+      .kelas-checkbox-item:hover {
+         border-color: #2ecc71;
+         background: #f8fff9;
+      }
+
+      .kelas-checkbox-item input[type="checkbox"] {
+         margin-right: 0.75rem;
+         transform: scale(1.2);
+      }
+
+      .kelas-checkbox-item.selected {
+         border-color: #2ecc71;
+         background: #f8fff9;
+      }
+
+      /* Animation for new elements */
+      .fade-in {
+         animation: fadeInUp 0.5s ease-out;
+      }
+
+      @keyframes fadeInUp {
+         from {
+            opacity: 0;
+            transform: translateY(20px);
+         }
+
+         to {
+            opacity: 1;
+            transform: translateY(0);
+         }
+      }
+
+      .profile-section {
+         background: linear-gradient(135deg, #f8fff9 0%, #e8f5e8 100%);
+         border: 2px solid #e1f5e1;
+         border-radius: 15px;
+         padding: 2rem;
+         margin-bottom: 2rem;
+      }
+
+      .guru-info-card {
+         background: white;
+         border-radius: 10px;
+         padding: 1.5rem;
+         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .deadline-container {
+         max-height: 300px;
+         overflow-y: auto;
+      }
+
+      .deadline-item {
+         background: #fff8e1;
+         border-left: 4px solid #f39c12;
+         padding: 1rem;
+         margin-bottom: 1rem;
+         border-radius: 0 8px 8px 0;
+         transition: all 0.3s;
+      }
+
+      .deadline-item:hover {
+         transform: translateX(5px);
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .submission-badge {
+         background: #3498db;
+         color: white;
+         padding: 0.25rem 0.5rem;
+         border-radius: 12px;
+         font-size: 0.8rem;
+         margin-right: 0.5rem;
+      }
+
+      .pending-grade-badge {
+         background: #e74c3c;
+         color: white;
+         padding: 0.25rem 0.5rem;
+         border-radius: 12px;
+         font-size: 0.8rem;
+      }
+
+      .all-graded-badge {
+         background: #27ae60;
+         color: white;
+         padding: 0.25rem 0.5rem;
+         border-radius: 12px;
+         font-size: 0.8rem;
+      }
+
+      /* Progress indicators for students */
+      .progress-excellent {
+         color: #27ae60;
+      }
+
+      .progress-good {
+         color: #f39c12;
+      }
+
+      .progress-needs-improvement {
+         color: #e74c3c;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+         .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+         }
+
+         .class-stats {
+            grid-template-columns: repeat(2, 1fr);
+         }
+
+         .guru-info-card {
+            padding: 1rem;
+         }
+      }
+
+      .modal-overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 0, 0, 0.5);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         z-index: 1000;
+      }
+
+      .modal-content {
+         background: white;
+         border-radius: 10px;
+         width: 90%;
+         max-width: 800px;
+         max-height: 80vh;
+         overflow-y: auto;
+         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .modal-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 1.5rem;
+         border-bottom: 1px solid #e1e5e9;
+      }
+
+      .modal-header h3 {
+         margin: 0;
+         color: #333;
+      }
+
+      .modal-close {
+         background: none;
+         border: none;
+         font-size: 1.5rem;
+         cursor: pointer;
+         color: #666;
+         padding: 0;
+         width: 30px;
+         height: 30px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+
+      .modal-close:hover {
+         color: #333;
+      }
+
+      .modal-body {
+         padding: 1.5rem;
+      }
    </style>
 </head>
 
@@ -301,7 +563,7 @@
          <p>Sistem Manajemen E-Learning</p>
       </div>
       <div class="user-info">
-         <span id="userGreeting">Selamat datang, Guru</span>
+         <span id="userGreeting">Selamat datang, <%= user.nama %></span>
          <button class="logout-btn" onclick="logout()">Logout</button>
       </div>
    </div>
@@ -321,14 +583,26 @@
             <span id="alertMessage"></span>
          </div>
 
-         
+         <!-- Enhanced Dashboard Section -->
          <div id="dashboard" class="page-section active">
-            <h2>Ringkasan Pembelajaran</h2>
+            <h2>Dashboard Guru</h2>
+
+            <!-- Enhanced Profile Section -->
+            <div class="card profile-section" id="profileSection">
+               <div class="card-title">Informasi Profil</div>
+               <div id="guruProfile">
+                  <div class="loading">Memuat informasi profil...</div>
+               </div>
+            </div>
 
             <div class="stats-grid">
                <div class="stat-card">
                   <div class="stat-value" id="totalMateri">0</div>
                   <div class="stat-label">Materi Saya</div>
+               </div>
+               <div class="stat-card">
+                  <div class="stat-value" id="totalKelas">0</div>
+                  <div class="stat-label">Kelas Mengajar</div>
                </div>
                <div class="stat-card">
                   <div class="stat-value" id="totalSiswa">0</div>
@@ -344,6 +618,30 @@
                </div>
             </div>
 
+            <!-- Wali Kelas Section (conditional) -->
+            <div class="card" id="waliKelasSection" style="display: none;">
+               <div class="card-title">Dashboard Wali Kelas</div>
+               <div id="waliKelasContent">
+                  <!-- Content will be loaded here -->
+               </div>
+            </div>
+
+            <!-- Classes Info Section -->
+            <div class="card">
+               <div class="card-title">Kelas yang Diampu</div>
+               <div id="kelasInfo">
+                  <div class="loading">Memuat informasi kelas...</div>
+               </div>
+            </div>
+
+            <!-- Upcoming Deadlines -->
+            <div class="card">
+               <div class="card-title">Deadline Mendatang (7 Hari)</div>
+               <div class="deadline-container" id="upcomingDeadlines">
+                  <div class="loading">Memuat deadline...</div>
+               </div>
+            </div>
+
             <div class="card">
                <div class="card-title">Aktivitas Terakhir</div>
                <div id="recentActivity">
@@ -352,7 +650,7 @@
             </div>
          </div>
 
-         
+         <!-- Rest of the sections remain the same as before -->
          <div id="materi-management" class="page-section">
             <h2>Kelola Materi Pembelajaran</h2>
 
@@ -385,7 +683,19 @@
             </div>
          </div>
 
-         
+         <!-- Enhanced Siswa Progress Section -->
+         <div id="siswa-progress" class="page-section">
+            <h2>Progress Siswa per Kelas</h2>
+
+            <div class="card">
+               <div class="card-title">Progress Siswa Berdasarkan Kelas</div>
+               <div id="siswaProgressContainer">
+                  <div class="loading">Memuat progress siswa...</div>
+               </div>
+            </div>
+         </div>
+
+         <!-- Other sections remain the same... -->
          <div id="tugas-management" class="page-section">
             <h2>Kelola Tugas</h2>
 
@@ -422,7 +732,6 @@
             </div>
          </div>
 
-         
          <div id="nilai-management" class="page-section">
             <h2>Kelola Penilaian</h2>
 
@@ -434,19 +743,6 @@
             </div>
          </div>
 
-         
-         <div id="siswa-progress" class="page-section">
-            <h2>Progress Siswa</h2>
-
-            <div class="card">
-               <div class="card-title">Daftar Siswa dan Progress</div>
-               <div id="siswaProgressContainer">
-                  <div class="loading">Memuat progress siswa...</div>
-               </div>
-            </div>
-         </div>
-
-         
          <div id="diskusi-management" class="page-section">
             <h2>Kelola Diskusi</h2>
 
@@ -461,9 +757,9 @@
    </div>
 
    <script>
-      
-      
-      
+
+
+
       let currentData = {
          materi: [],
          tugas: [],
@@ -471,9 +767,6 @@
          diskusi: []
       };
 
-      
-      
-      
       function showAlert(message, type = 'success') {
          const alert = document.getElementById('alert');
          const alertMessage = document.getElementById('alertMessage');
@@ -497,9 +790,6 @@
          return new Date(dateString).toLocaleString('id-ID');
       }
 
-      
-      
-      
       async function apiCall(endpoint, options = {}) {
          const defaultOptions = {
             method: 'GET',
@@ -524,25 +814,22 @@
          }
       }
 
-      
-      
-      
       function showSection(sectionId) {
-         
+
          document.querySelectorAll('.page-section').forEach(section => {
             section.classList.remove('active');
          });
 
-         
+
          document.querySelectorAll('.nav-item').forEach(item => {
             item.classList.remove('active');
          });
 
-         
+
          document.getElementById(sectionId).classList.add('active');
          event.target.classList.add('active');
 
-         
+
          switch (sectionId) {
             case 'materi-management':
                loadMateriList();
@@ -563,26 +850,241 @@
          }
       }
 
-      
-      
-      
       async function loadDashboardData() {
          try {
             const stats = await apiCall('/guru/dashboard/stats');
-            updateDashboardStats(stats.data);
+            updateDashboardStats(stats);
+            displayGuruProfile(stats.data.guru_info);
 
             const activities = await apiCall('/guru/dashboard/recent-activity');
             displayRecentActivity(activities.data);
+
+            // Load class info
+            loadKelasInfo();
+
+            // Load upcoming deadlines
+            loadUpcomingDeadlines();
+
+            // Load wali kelas info if applicable
+            if (stats.data.guru_info.is_wali_kelas) {
+               loadWaliKelasStats();
+            }
          } catch (error) {
             console.error('Error loading dashboard:', error);
          }
       }
 
       function updateDashboardStats(stats) {
-         document.getElementById('totalMateri').textContent = stats.total_materi || 0;
-         document.getElementById('totalSiswa').textContent = stats.total_siswa || 0;
-         document.getElementById('tugasPending').textContent = stats.tugas_pending || 0;
-         document.getElementById('rataRataNilai').textContent = stats.rata_nilai || 0;
+         document.getElementById('totalMateri').textContent = stats.data.total_materi || 0;
+         document.getElementById('totalKelas').textContent = stats.data.total_kelas || 0;
+         document.getElementById('totalSiswa').textContent = stats.data.total_siswa || 0;
+         document.getElementById('tugasPending').textContent = stats.data.tugas_pending || 0;
+         document.getElementById('rataRataNilai').textContent = stats.data.rata_nilai || 0;
+      }
+
+      function displayGuruProfile(guruInfo) {
+         const container = document.getElementById('guruProfile');
+
+         container.innerHTML = `
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;">
+               <div>
+                  <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                     <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #2ecc71, #27ae60); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">
+                        ${guruInfo.nama.charAt(0).toUpperCase()}
+                     </div>
+                     <div>
+                        <h3 style="margin: 0; color: #333;">${guruInfo.nama}</h3>
+                        <p style="margin: 0.25rem 0; color: #666;">Bidang: ${guruInfo.bidang || 'Tidak ditentukan'}</p>
+                        ${guruInfo.is_wali_kelas ?
+               `<span style="background: #f39c12; color: white; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">
+                              Wali Kelas: ${guruInfo.wali_kelas_nama}
+                           </span>` :
+               '<span style="color: #666; font-style: italic;">Bukan Wali Kelas</span>'
+            }
+                     </div>
+                  </div>
+                  <div style="background: #f8fff9; padding: 1rem; border-radius: 8px;">
+                     <p style="margin: 0.5rem 0;"><strong>Email:</strong> ${guruInfo.email}</p>
+                     <p style="margin: 0.5rem 0;"><strong>Login terakhir:</strong> ${guruInfo.last_login ? new Date(guruInfo.last_login).toLocaleString('id-ID') : 'Belum pernah'}</p>
+                     <p style="margin: 0.5rem 0;"><strong>Total login:</strong> ${guruInfo.login_count} kali</p>
+                  </div>
+               </div>
+               <div>
+                  <h4 style="color: #2ecc71; margin-bottom: 1rem;">Kelas yang Diampu:</h4>
+                  <div style="background: #f8fff9; padding: 1rem; border-radius: 8px;">
+                     ${guruInfo.kelas_mengajar !== 'Belum mengajar' ?
+               guruInfo.kelas_mengajar.split(', ').map(kelas =>
+                  `<span style="display: inline-block; background: #2ecc71; color: white; padding: 0.25rem 0.5rem; border-radius: 12px; margin: 0.25rem; font-size: 0.8rem;">
+                              ${kelas}
+                           </span>`
+               ).join('') :
+               '<p style="color: #666; font-style: italic;">Belum ditugaskan di kelas manapun</p>'
+            }
+                  </div>
+               </div>
+            </div>
+         `;
+      }
+
+      async function loadKelasInfo() {
+         try {
+            const kelasInfo = await apiCall('/guru/kelas/info');
+            displayKelasInfo(kelasInfo.data);
+         } catch (error) {
+            document.getElementById('kelasInfo').innerHTML = '<p style="color: #666;">Tidak dapat memuat informasi kelas</p>';
+         }
+      }
+
+      function displayKelasInfo(kelasData) {
+         const container = document.getElementById('kelasInfo');
+
+         if (kelasData.length === 0) {
+            container.innerHTML = '<p style="color: #666;">Anda belum ditugaskan di kelas manapun</p>';
+            return;
+         }
+
+         container.innerHTML = `
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
+               ${kelasData.map(kelas => `
+                  <div style="background: #f8fff9; border: 1px solid #e1e5e9; border-radius: 8px; padding: 1rem; position: relative;">
+                     ${kelas.is_wali_kelas ?
+               '<span style="position: absolute; top: 0.5rem; right: 0.5rem; background: #f39c12; color: white; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.7rem;">Wali Kelas</span>' :
+               ''
+            }
+                     <h4 style="color: #2ecc71; margin: 0 0 0.5rem 0;">${kelas.nama}</h4>
+                     <p style="margin: 0.25rem 0; color: #666;"><strong>Mata Pelajaran:</strong> ${kelas.mata_pelajaran}</p>
+                     <p style="margin: 0.25rem 0; color: #666;"><strong>Tingkat:</strong> ${kelas.tingkat}</p>
+                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 1rem; text-align: center;">
+                        <div>
+                           <div style="font-size: 1.5rem; font-weight: bold; color: #2ecc71;">${kelas.jumlah_siswa || 0}</div>
+                           <div style="font-size: 0.8rem; color: #666;">Siswa</div>
+                        </div>
+                        <div>
+                           <div style="font-size: 1.5rem; font-weight: bold; color: #3498db;">${kelas.jumlah_materi || 0}</div>
+                           <div style="font-size: 0.8rem; color: #666;">Materi</div>
+                        </div>
+                        <div>
+                           <div style="font-size: 1.5rem; font-weight: bold; color: #f39c12;">${kelas.jumlah_tugas || 0}</div>
+                           <div style="font-size: 0.8rem; color: #666;">Tugas</div>
+                        </div>
+                     </div>
+                  </div>
+               `).join('')}
+            </div>
+         `;
+      }
+
+      async function loadUpcomingDeadlines() {
+         try {
+            const deadlines = await apiCall('/guru/deadlines/upcoming');
+            displayUpcomingDeadlines(deadlines.data);
+         } catch (error) {
+            document.getElementById('upcomingDeadlines').innerHTML = '<p style="color: #666;">Tidak dapat memuat deadline</p>';
+         }
+      }
+
+      function displayUpcomingDeadlines(deadlines) {
+         const container = document.getElementById('upcomingDeadlines');
+
+         if (deadlines.length === 0) {
+            container.innerHTML = '<p style="color: #666;">Tidak ada deadline dalam 7 hari ke depan</p>';
+            return;
+         }
+
+         container.innerHTML = deadlines.map(deadline => `
+            <div style="background: #fff8e1; border-left: 4px solid #f39c12; padding: 1rem; margin-bottom: 1rem; border-radius: 0 8px 8px 0;">
+               <div style="display: flex; justify-content: space-between; align-items: start;">
+                  <div style="flex: 1;">
+                     <h4 style="margin: 0 0 0.5rem 0; color: #333;">${deadline.judul}</h4>
+                     <p style="margin: 0.25rem 0; color: #666;">Materi: ${deadline.materi_judul}</p>
+                     <p style="margin: 0.25rem 0; color: #666;">Kelas: ${deadline.kelas_names}</p>
+                     <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                        <span style="background: #3498db; color: white; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.8rem;">
+                           ${deadline.total_submissions} submission
+                        </span>
+                        ${deadline.pending_grading > 0 ?
+               `<span style="background: #e74c3c; color: white; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.8rem;">
+                              ${deadline.pending_grading} perlu dinilai
+                           </span>` :
+               '<span style="background: #27ae60; color: white; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.8rem;">Semua dinilai</span>'
+            }
+                     </div>
+                  </div>
+                  <div style="text-align: right;">
+                     <div style="font-weight: bold; color: #f39c12;">
+                        ${new Date(deadline.deadline).toLocaleDateString('id-ID')}
+                     </div>
+                     <div style="font-size: 0.8rem; color: #666;">
+                        ${new Date(deadline.deadline).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         `).join('');
+      }
+
+      async function loadWaliKelasStats() {
+         try {
+            const waliStats = await apiCall('/guru/wali-kelas/stats');
+            if (waliStats.data.is_wali_kelas) {
+               displayWaliKelasStats(waliStats.data);
+               document.getElementById('waliKelasSection').style.display = 'block';
+            }
+         } catch (error) {
+            console.error('Error loading wali kelas stats:', error);
+         }
+      }
+
+      function displayWaliKelasStats(waliData) {
+         const container = document.getElementById('waliKelasContent');
+         const data = waliData;
+
+         container.innerHTML = `
+            <div style="background: #f0f8ff; border: 2px solid #3498db; border-radius: 10px; padding: 1.5rem;">
+               <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                  <div style="width: 50px; height: 50px; background: #3498db; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                     🏫
+                  </div>
+                  <div>
+                     <h3 style="margin: 0; color: #3498db;">Wali Kelas: ${data.kelas_info.nama}</h3>
+                     <p style="margin: 0.25rem 0 0 0; color: #666;">Tingkat ${data.kelas_info.tingkat} • ${data.attendance.total_siswa} Siswa</p>
+                  </div>
+               </div>
+               
+               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                  <div style="text-align: center; background: white; padding: 1rem; border-radius: 8px;">
+                     <div style="font-size: 1.8rem; font-weight: bold; color: #27ae60;">${data.attendance.active_today || 0}</div>
+                     <div style="font-size: 0.8rem; color: #666;">Aktif Hari Ini</div>
+                  </div>
+                  <div style="text-align: center; background: white; padding: 1rem; border-radius: 8px;">
+                     <div style="font-size: 1.8rem; font-weight: bold; color: #3498db;">${data.attendance.active_week || 0}</div>
+                     <div style="font-size: 0.8rem; color: #666;">Aktif Minggu Ini</div>
+                  </div>
+                  <div style="text-align: center; background: white; padding: 1rem; border-radius: 8px;">
+                     <div style="font-size: 1.8rem; font-weight: bold; color: #f39c12;">${Math.round(data.grades.rata_nilai_kelas || 0)}</div>
+                     <div style="font-size: 0.8rem; color: #666;">Rata-rata Nilai</div>
+                  </div>
+                  <div style="text-align: center; background: white; padding: 1rem; border-radius: 8px;">
+                     <div style="font-size: 1.8rem; font-weight: bold; color: #e74c3c;">${data.grades.siswa_nilai_baik || 0}</div>
+                     <div style="font-size: 0.8rem; color: #666;">Nilai ≥ 80</div>
+                  </div>
+               </div>
+               
+               <div style="background: white; padding: 1rem; border-radius: 8px;">
+                  <h4 style="margin: 0 0 1rem 0; color: #3498db;">Aktivitas Minggu Ini:</h4>
+                  <div style="display: flex; justify-content: space-between;">
+                     <div>
+                        <span style="font-weight: bold; color: #27ae60;">${data.activity.submissions_week || 0}</span>
+                        <span style="color: #666;"> submission tugas</span>
+                     </div>
+                     <div>
+                        <span style="font-weight: bold; color: #3498db;">${data.activity.materials_accessed_week || 0}</span>
+                        <span style="color: #666;"> akses materi</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         `;
       }
 
       function displayRecentActivity(activities) {
@@ -601,60 +1103,56 @@
          `).join('');
       }
 
-      
-      
-      
       async function loadMateriList() {
-  const container = document.getElementById('materiListContainer');
-  container.innerHTML = '<div class="loading">Memuat daftar materi...</div>';
+         const container = document.getElementById('materiListContainer');
+         container.innerHTML = '<div class="loading">Memuat daftar materi...</div>';
 
-  try {
-    const response = await fetch('/guru/materi', {
-      method: 'GET',
-      credentials: 'include'
-    });
+         try {
+            const response = await fetch('/guru/materi', {
+               method: 'GET',
+               credentials: 'include'
+            });
 
-    const result = await response.json();
-    
-    if (result.success) {
-      
-      currentData.materi = result.data.map(m => ({
-        ...m,
-        konten: m.konten || "Tidak ada konten yang tersedia"
-      }));
-      
-      displayMateriList(currentData.materi);
-    } else {
-      container.innerHTML = `
+            const result = await response.json();
+
+            if (result.success) {
+
+               currentData.materi = result.data.map(m => ({
+                  ...m,
+                  konten: m.konten || "Tidak ada konten yang tersedia"
+               }));
+
+               displayMateriList(currentData.materi);
+            } else {
+               container.innerHTML = `
         <div class="empty-state">
           <p>${result.error || 'Gagal memuat daftar materi'}</p>
           <button class="btn" onclick="loadMateriList()">Coba Lagi</button>
         </div>
       `;
-    }
-  } catch (error) {
-    console.error('Error loading materi list:', error);
-    container.innerHTML = `
+            }
+         } catch (error) {
+            console.error('Error loading materi list:', error);
+            container.innerHTML = `
       <div class="empty-state">
         <p>Terjadi kesalahan jaringan</p>
         <button class="btn" onclick="loadMateriList()">Coba Lagi</button>
       </div>
     `;
-  }
-}
+         }
+      }
 
-      
-function displayMateriList(materiList) {
-  const container = document.getElementById('materiListContainer');
+      function displayMateriList(materiList) {
+         const container = document.getElementById('materiListContainer');
 
-  if (!materiList || materiList.length === 0) {
-    container.innerHTML = '<div class="empty-state">Belum ada materi yang dibuat</div>';
-    return;
-  }
+         if (!materiList || materiList.length === 0) {
+            container.innerHTML = '<div class="empty-state">Belum ada materi yang dibuat</div>';
+            return;
+         }
 
-  const table = document.createElement('table');
-  table.className = 'table';
-  table.innerHTML = `
+         const table = document.createElement('table');
+         table.className = 'table';
+         table.innerHTML = `
     <thead>
       <tr>
         <th>Judul</th>
@@ -670,12 +1168,12 @@ function displayMateriList(materiList) {
           <td>${materi.judul}</td>
           <td>${materi.deskripsi}</td>
           <td>
-            ${materi.konten ? 
-              (materi.konten.length > 100 ? 
-                materi.konten.substring(0, 100) + '...' : 
-                materi.konten
-              ) : 
-              'Tidak ada konten'
+            ${materi.konten ?
+               (materi.konten.length > 100 ?
+                  materi.konten.substring(0, 100) + '...' :
+                  materi.konten
+               ) :
+               'Tidak ada konten'
             }
           </td>
           <td>${materi.created_at ? new Date(materi.created_at).toLocaleDateString('id-ID') : '-'}</td>
@@ -689,30 +1187,36 @@ function displayMateriList(materiList) {
     </tbody>
   `;
 
-  container.innerHTML = '';
-  container.appendChild(table);
-}
+         container.innerHTML = '';
+         container.appendChild(table);
+      }
 
       async function loadMateriOptions() {
-         const select = document.getElementById('tugasMateri');
-         select.innerHTML = '<option value="">-- Pilih Materi --</option>';
-
          try {
-            const response = await apiCall('/guru/materi');
-            response.data.forEach(materi => {
+            const [materiResponse, kelasResponse] = await Promise.all([
+               apiCall('/guru/materi'),
+               apiCall('/guru/kelas/available')
+            ]);
+
+            // Populate materi dropdown for tugas
+            const select = document.getElementById('tugasMateri');
+            select.innerHTML = '<option value="">-- Pilih Materi --</option>';
+
+            materiResponse.data.forEach(materi => {
                const option = document.createElement('option');
                option.value = materi.id;
                option.textContent = materi.judul;
                select.appendChild(option);
             });
+
+            // Store available classes for materi form
+            window.availableKelas = kelasResponse.data;
+
          } catch (error) {
-            console.error('Error loading materi options:', error);
+            console.error('Error loading options:', error);
          }
       }
 
-      
-      
-      
       async function loadTugasList() {
          const container = document.getElementById('tugasListContainer');
 
@@ -753,51 +1257,48 @@ function displayMateriList(materiList) {
          `).join('');
       }
 
-      
-      
-      
       async function loadPendingSubmissions() {
-  const container = document.getElementById('tugasPendingContainer');
-  container.innerHTML = '<div class="loading">Memuat tugas pending...</div>';
+         const container = document.getElementById('tugasPendingContainer');
+         container.innerHTML = '<div class="loading">Memuat tugas pending...</div>';
 
-  try {
-    const response = await fetch('/guru/submissions/pending', {
-      method: 'GET',
-      credentials: 'include'
-    });
+         try {
+            const response = await fetch('/guru/submissions/pending', {
+               method: 'GET',
+               credentials: 'include'
+            });
 
-    const result = await response.json();
-    
-    if (result.success) {
-      displayPendingSubmissions(result.data);
-    } else {
-      container.innerHTML = `
+            const result = await response.json();
+
+            if (result.success) {
+               displayPendingSubmissions(result.data);
+            } else {
+               container.innerHTML = `
         <div class="empty-state">
           <p>${result.error || 'Gagal memuat submission pending'}</p>
           <button class="btn" onclick="loadPendingSubmissions()">Coba Lagi</button>
         </div>
       `;
-    }
-  } catch (error) {
-    console.error('Error loading pending submissions:', error);
-    container.innerHTML = `
+            }
+         } catch (error) {
+            console.error('Error loading pending submissions:', error);
+            container.innerHTML = `
       <div class="empty-state">
         <p>Terjadi kesalahan jaringan</p>
         <button class="btn" onclick="loadPendingSubmissions()">Coba Lagi</button>
       </div>
     `;
-  }
-}
+         }
+      }
 
       function displayPendingSubmissions(submissions) {
-  const container = document.getElementById('tugasPendingContainer');
+         const container = document.getElementById('tugasPendingContainer');
 
-  if (submissions.length === 0) {
-    container.innerHTML = '<div class="empty-state">Tidak ada tugas yang perlu dinilai</div>';
-    return;
-  }
+         if (submissions.length === 0) {
+            container.innerHTML = '<div class="empty-state">Tidak ada tugas yang perlu dinilai</div>';
+            return;
+         }
 
-  container.innerHTML = submissions.map(submission => `
+         container.innerHTML = submissions.map(submission => `
     <div class="tugas-item">
       <div class="tugas-header">
         <h4>${submission.tugas_judul}</h4>
@@ -833,107 +1334,128 @@ function displayMateriList(materiList) {
       </div>
     </div>
   `).join('');
-}
+      }
 
       async function berikanNilai(submissionId) {
-  const nilaiInput = document.getElementById(`nilai-${submissionId}`);
-  const feedbackInput = document.getElementById(`feedback-${submissionId}`);
-  
-  const nilai = nilaiInput ? parseInt(nilaiInput.value) : null;
-  const feedback = feedbackInput ? feedbackInput.value : "";
+         const nilaiInput = document.getElementById(`nilai-${submissionId}`);
+         const feedbackInput = document.getElementById(`feedback-${submissionId}`);
 
-  
-  if (nilai === null || isNaN(nilai)) {
-    showAlert('Masukkan nilai yang valid (0-100)', 'error');
-    return;
-  }
+         const nilai = nilaiInput ? parseInt(nilaiInput.value) : null;
+         const feedback = feedbackInput ? feedbackInput.value : "";
 
-  if (nilai < 0 || nilai > 100) {
-    showAlert('Nilai harus antara 0-100', 'error');
-    return;
-  }
 
-  try {
-    const response = await fetch(`/guru/submissions/${submissionId}/grade`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify({ 
-        nilai: nilai,
-        feedback: feedback 
-      })
-    });
+         if (nilai === null || isNaN(nilai)) {
+            showAlert('Masukkan nilai yang valid (0-100)', 'error');
+            return;
+         }
 
-    const result = await response.json();
-    
-    if (!response.ok) {
-      throw new Error(result.error || 'Terjadi kesalahan');
-    }
-
-    if (result.success) {
-      showAlert('Nilai berhasil diberikan!');
-      
-      
-      loadPendingSubmissions();
-      loadDashboardData();
-      
-      
-      if (nilaiInput) nilaiInput.value = '';
-      if (feedbackInput) feedbackInput.value = '';
-      
-    } else {
-      showAlert(result.error || 'Gagal memberikan nilai', 'error');
-    }
-    
-  } catch (error) {
-    console.error('Error grading submission:', error);
-    showAlert(error.message || 'Terjadi kesalahan saat memberikan nilai', 'error');
-  }
-}
-
-      
-      
-      
-      async function loadSiswaProgress() {
-         const container = document.getElementById('siswaProgressContainer');
+         if (nilai < 0 || nilai > 100) {
+            showAlert('Nilai harus antara 0-100', 'error');
+            return;
+         }
 
          try {
-            const response = await apiCall('/guru/siswa/progress');
-            displaySiswaProgress(response.data);
+            const response = await fetch(`/guru/submissions/${submissionId}/grade`, {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json',
+               },
+               credentials: 'include',
+               body: JSON.stringify({
+                  nilai: nilai,
+                  feedback: feedback
+               })
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+               throw new Error(result.error || 'Terjadi kesalahan');
+            }
+
+            if (result.success) {
+               showAlert('Nilai berhasil diberikan!');
+
+
+               loadPendingSubmissions();
+               loadDashboardData();
+
+
+               if (nilaiInput) nilaiInput.value = '';
+               if (feedbackInput) feedbackInput.value = '';
+
+            } else {
+               showAlert(result.error || 'Gagal memberikan nilai', 'error');
+            }
+
+         } catch (error) {
+            console.error('Error grading submission:', error);
+            showAlert(error.message || 'Terjadi kesalahan saat memberikan nilai', 'error');
+         }
+      }
+
+      async function loadSiswaProgress() {
+         try {
+            const response = await apiCall('/guru/siswa/by-kelas');
+            displaySiswaProgressByKelas(response.data);
          } catch (error) {
             container.innerHTML = '<div class="empty-state">Gagal memuat progress siswa</div>';
          }
       }
 
-      function displaySiswaProgress(siswaList) {
+      function displaySiswaProgressByKelas(kelasData) {
          const container = document.getElementById('siswaProgressContainer');
 
-         if (siswaList.length === 0) {
+         if (kelasData.length === 0) {
             container.innerHTML = '<div class="empty-state">Tidak ada data progress siswa</div>';
             return;
          }
 
-         container.innerHTML = siswaList.map(siswa => `
-            <div class="siswa-card">
-               <h4>${siswa.nama}</h4>
-               <p>${siswa.email}</p>
-               <div class="progress-bar">
-                  <div class="progress-fill" style="width: ${siswa.progress || 0}%"></div>
+         container.innerHTML = kelasData.map(kelasItem => `
+            <div style="background: #f8fff9; border: 1px solid #e1e5e9; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                  <h3 style="margin: 0; color: #2ecc71;">${kelasItem.kelas.nama} - Tingkat ${kelasItem.kelas.tingkat}</h3>
+                  <div style="display: flex; gap: 1rem; font-size: 0.9rem; color: #666;">
+                     <span>👥 ${kelasItem.statistik.total_siswa} siswa</span>
+                     <span>📊 ${kelasItem.statistik.avg_progress}% progress</span>
+                     <span>🎯 ${kelasItem.statistik.avg_grade} rata-rata</span>
+                  </div>
                </div>
-               <p>Progress: ${siswa.progress || 0}%</p>
-               <p>Rata-rata Nilai: ${siswa.rata_nilai || 0}</p>
-               <button class="btn" onclick="detailSiswaProgress(${siswa.id})" style="margin-top: 0.5rem;">
-                  Detail Progress
-               </button>
+               
+               ${kelasItem.siswa.length > 0 ? `
+                  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
+                     ${kelasItem.siswa.map(siswa => `
+                        <div class="siswa-card">
+                           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                              <h4 style="margin: 0; color: #333;">${siswa.nama}</h4>
+                              <span style="background: ${siswa.progress >= 70 ? '#27ae60' : siswa.progress >= 40 ? '#f39c12' : '#e74c3c'}; color: white; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">
+                                 ${siswa.progress}%
+                              </span>
+                           </div>
+                           <p style="margin: 0.25rem 0; color: #666; font-size: 0.9rem;">${siswa.email}</p>
+                           <div class="progress-bar" style="margin: 0.5rem 0;">
+                              <div class="progress-fill" style="width: ${siswa.progress}%; background: ${siswa.progress >= 70 ? '#27ae60' : siswa.progress >= 40 ? '#f39c12' : '#e74c3c'};">
+                              </div>
+                           </div>
+                           <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #666; margin-bottom: 0.75rem;">
+                              <span>Tugas: ${siswa.tugas_dikerjakan}/${siswa.total_tugas}</span>
+                              <span>Rata-rata: ${siswa.rata_nilai}</span>
+                           </div>
+                           <button class="btn" onclick="detailSiswaProgress(${siswa.id})" style="width: 100%; font-size: 0.8rem; padding: 0.5rem;">
+                              Detail Progress
+                           </button>
+                        </div>
+                     `).join('')}
+                  </div>
+               ` : `
+                  <div style="text-align: center; padding: 2rem; color: #666;">
+                     <p>Belum ada siswa di kelas ini yang mengakses materi Anda</p>
+                  </div>
+               `}
             </div>
          `).join('');
       }
 
-      
-      
-      
       async function loadDiskusi() {
          const container = document.getElementById('diskusiContainer');
 
@@ -967,157 +1489,262 @@ function displayMateriList(materiList) {
          `).join('');
       }
 
-      
-      
-      
       document.addEventListener('DOMContentLoaded', function () {
-         
-         document.getElementById('addMateriForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
+         // Single event listener for materi form
+         document.getElementById('addMateriForm').addEventListener('submit', handleMateriFormSubmit);
 
-            const formData = new FormData(this);
-            const materiData = {
-               judul: formData.get('judul'),
-               deskripsi: formData.get('deskripsi'),
-               konten: formData.get('konten')
-            };
+         // Single event listener for tugas form  
+         document.getElementById('addTugasForm').addEventListener('submit', handleTugasFormSubmit);
 
-            try {
-               await apiCall('/guru/materi', {
-                  method: 'POST',
-                  body: JSON.stringify(materiData)
-               });
-
-               showAlert('Materi berhasil ditambahkan!');
-               this.reset();
-               loadMateriList();
-               loadDashboardData();
-            } catch (error) {
-               console.error('Error adding materi:', error);
-            }
-         });
-
-         
-         document.getElementById('addTugasForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            const tugasData = {
-               materi_id: parseInt(formData.get('materi_id')),
-               judul: formData.get('judul'),
-               deskripsi: formData.get('deskripsi'),
-               deadline: formData.get('deadline')
-            };
-
-            try {
-               await apiCall('/guru/tugas', {
-                  method: 'POST',
-                  body: JSON.stringify(tugasData)
-               });
-
-               showAlert('Tugas berhasil dibuat!');
-               this.reset();
-               loadTugasList();
-               loadDashboardData();
-            } catch (error) {
-               console.error('Error creating tugas:', error);
-            }
-         });
-
-         
+         // Load initial dashboard data
          loadDashboardData();
       });
 
-      
-      
-      
+      async function handleMateriFormSubmit(e) {
+         e.preventDefault();
+
+         const form = e.target;
+         const formData = new FormData(form);
+
+         // Check if kelas selection is needed and not yet done
+         if (!window.selectedKelasIds) {
+            showKelasSelectionModal(formData);
+            return;
+         }
+
+         // Proceed with submission
+         await submitMateriForm(formData);
+      }
+
+      async function submitMateriForm(formData) {
+         const materiData = {
+            judul: formData.get('judul'),
+            deskripsi: formData.get('deskripsi'),
+            konten: formData.get('konten'),
+            kelas_ids: window.selectedKelasIds
+         };
+
+         try {
+            await apiCall('/guru/materi', {
+               method: 'POST',
+               body: JSON.stringify(materiData)
+            });
+
+            showAlert('Materi berhasil ditambahkan!');
+
+            // Reset form and clear selections
+            document.getElementById('addMateriForm').reset();
+            window.selectedKelasIds = null;
+            window.currentFormData = null;
+
+            // Reload data
+            loadMateriList();
+            loadDashboardData();
+
+         } catch (error) {
+            console.error('Error adding materi:', error);
+            showAlert('Gagal menambahkan materi: ' + error.message, 'error');
+         }
+      }
+
+      async function handleTugasFormSubmit(e) {
+         e.preventDefault()
+
+         const formData = new FormData(e.target);
+         const tugasData = {
+            materi_id: parseInt(formData.get('materi_id')),
+            judul: formData.get('judul'),
+            deskripsi: formData.get('deskripsi'),
+            deadline: formData.get('deadline')
+         };
+
+         try {
+            await apiCall('/guru/tugas', {
+               method: 'POST',
+               body: JSON.stringify(tugasData)
+            });
+
+            showAlert('Tugas berhasil dibuat!');
+            e.target.reset();
+            loadTugasList();
+            loadDashboardData();
+         } catch (error) {
+            console.error('Error creating tugas:', error);
+         }
+      }
+
+      function showKelasSelectionModal(formData) {
+         if (!window.availableKelas || window.availableKelas.length === 0) {
+            showAlert('Tidak ada kelas tersedia. Pastikan Anda sudah ditugaskan di kelas.', 'error');
+            return;
+         }
+
+         const modal = document.createElement('div');
+         modal.className = 'modal-overlay';
+         modal.innerHTML = `
+      <div class="modal-content">
+         <div class="modal-header">
+            <h3>Pilih Kelas untuk Materi</h3>
+            <button class="modal-close" onclick="closeKelasModal()">&times;</button>
+         </div>
+         <div class="modal-body">
+            <p style="margin-bottom: 1rem; color: #666;">Pilih kelas yang akan menggunakan materi "${formData.get('judul')}":</p>
+            <div id="kelasCheckboxes">
+               ${window.availableKelas.map(kelas => `
+                  <label class="kelas-checkbox-item">
+                     <input type="checkbox" value="${kelas.id}">
+                     <span>${kelas.nama} - Tingkat ${kelas.tingkat}</span>
+                  </label>
+               `).join('')}
+            </div>
+            <div style="margin-top: 1.5rem; text-align: right;">
+               <button type="button" onclick="closeKelasModal()" style="margin-right: 10px; background: #95a5a6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">
+                  Batal
+               </button>
+               <button type="button" onclick="confirmKelasSelection()" class="btn">
+                  Konfirmasi
+               </button>
+            </div>
+         </div>
+      </div>
+   `;
+
+         document.body.appendChild(modal);
+
+         // Store form data for later use
+         window.currentFormData = formData;
+
+         // Add click handlers for checkboxes
+         modal.querySelectorAll('.kelas-checkbox-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+               if (e.target.tagName !== 'INPUT') {
+                  const checkbox = this.querySelector('input[type="checkbox"]');
+                  checkbox.checked = !checkbox.checked;
+               }
+               this.classList.toggle('selected', this.querySelector('input[type="checkbox"]').checked);
+            });
+         });
+      }
+
+      function closeKelasModal() {
+         const modal = document.querySelector('.modal-overlay');
+         if (modal) {
+            modal.remove();
+         }
+      }
+
+      async function confirmKelasSelection() {
+         const checkboxes = document.querySelectorAll('#kelasCheckboxes input[type="checkbox"]:checked');
+
+         if (checkboxes.length === 0) {
+            showAlert('Pilih minimal satu kelas', 'error');
+            return;
+         }
+
+         // Store selected kelas IDs
+         window.selectedKelasIds = Array.from(checkboxes).map(cb => parseInt(cb.value));
+
+         // Get the stored form data
+         const formData = window.currentFormData;
+
+         // Close modal
+         closeKelasModal();
+
+         // Submit the form with selected classes
+         if (formData) {
+            await submitMateriForm(formData);
+         } else {
+            showAlert('Terjadi kesalahan, silakan coba lagi', 'error');
+         }
+      }
+
       function viewMateri(id) {
-  const materi = currentData.materi.find(m => m.id === id);
-  if (materi) {
-    const judul = materi.judul || "Judul tidak tersedia";
-    const konten = materi.konten || "Tidak ada konten yang tersedia";
-    
-    alert(`Judul: ${judul}\n\nKonten: ${konten}`);
-  } else {
-    showAlert('Materi tidak ditemukan', 'error');
-  }
-}
+         const materi = currentData.materi.find(m => m.id === id);
+         if (materi) {
+            const judul = materi.judul || "Judul tidak tersedia";
+            const konten = materi.konten || "Tidak ada konten yang tersedia";
+
+            alert(`Judul: ${judul}\n\nKonten: ${konten}`);
+         } else {
+            showAlert('Materi tidak ditemukan', 'error');
+         }
+      }
 
       async function editMateri(id) {
-  
-  try {
-    const response = await fetch(`/guru/materi/${id}/detail`, {
-      method: 'GET',
-      credentials: 'include'
-    });
 
-    const result = await response.json();
-    
-    if (result.success) {
-      const materi = result.data;
-      editMateriModal(materi);
-    } else {
-      
-      const materi = currentData.materi.find(m => m.id === id);
-      if (materi) {
-        editMateriModal(materi);
-      } else {
-        showAlert('Materi tidak ditemukan', 'error');
+         try {
+            const response = await fetch(`/guru/materi/${id}/detail`, {
+               method: 'GET',
+               credentials: 'include'
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+               const materi = result.data;
+               editMateriModal(materi);
+            } else {
+
+               const materi = currentData.materi.find(m => m.id === id);
+               if (materi) {
+                  editMateriModal(materi);
+               } else {
+                  showAlert('Materi tidak ditemukan', 'error');
+               }
+            }
+         } catch (error) {
+            console.error('Error loading materi detail:', error);
+            const materi = currentData.materi.find(m => m.id === id);
+            if (materi) {
+               editMateriModal(materi);
+            } else {
+               showAlert('Materi tidak ditemukan', 'error');
+            }
+         }
       }
-    }
-  } catch (error) {
-    console.error('Error loading materi detail:', error);
-    const materi = currentData.materi.find(m => m.id === id);
-    if (materi) {
-      editMateriModal(materi);
-    } else {
-      showAlert('Materi tidak ditemukan', 'error');
-    }
-  }
-}
 
-function editMateriModal(materi) {
-  const newJudul = prompt('Edit Judul Materi:', materi.judul || '');
-  if (!newJudul) return;
+      function editMateriModal(materi) {
+         const newJudul = prompt('Edit Judul Materi:', materi.judul || '');
+         if (!newJudul) return;
 
-  const newKonten = prompt('Edit Konten Materi:', materi.konten || '');
-  if (!newKonten) return;
+         const newKonten = prompt('Edit Konten Materi:', materi.konten || '');
+         if (!newKonten) return;
 
-  
-  const newDeskripsi = prompt('Edit Deskripsi Materi:', materi.deskripsi || '');
 
-  try {
-    
-    fetch(`/guru/materi/${materi.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify({
-        judul: newJudul,
-        konten: newKonten,
-        deskripsi: newDeskripsi || ''
-      })
-    })
-    .then(response => response.json())
-    .then(result => {
-      if (result.success) {
-        showAlert('Materi berhasil diupdate!');
-        loadMateriList();
-      } else {
-        showAlert(result.error || 'Gagal mengupdate materi', 'error');
+         const newDeskripsi = prompt('Edit Deskripsi Materi:', materi.deskripsi || '');
+
+         try {
+
+            fetch(`/guru/materi/${materi.id}`, {
+               method: 'PUT',
+               headers: {
+                  'Content-Type': 'application/json',
+               },
+               credentials: 'include',
+               body: JSON.stringify({
+                  judul: newJudul,
+                  konten: newKonten,
+                  deskripsi: newDeskripsi || ''
+               })
+            })
+               .then(response => response.json())
+               .then(result => {
+                  if (result.success) {
+                     showAlert('Materi berhasil diupdate!');
+                     loadMateriList();
+                  } else {
+                     showAlert(result.error || 'Gagal mengupdate materi', 'error');
+                  }
+               })
+               .catch(error => {
+                  console.error('Error updating materi:', error);
+                  showAlert('Terjadi kesalahan saat mengupdate materi', 'error');
+               });
+         } catch (error) {
+            console.error('Error updating materi:', error);
+            showAlert('Terjadi kesalahan saat mengupdate materi', 'error');
+         }
       }
-    })
-    .catch(error => {
-      console.error('Error updating materi:', error);
-      showAlert('Terjadi kesalahan saat mengupdate materi', 'error');
-    });
-  } catch (error) {
-    console.error('Error updating materi:', error);
-    showAlert('Terjadi kesalahan saat mengupdate materi', 'error');
-  }
-}
 
       async function deleteMateri(id) {
          if (!confirm('Yakin ingin menghapus materi ini?')) return;
@@ -1185,7 +1812,6 @@ function editMateriModal(materi) {
       }
 
       function detailSiswaProgress(id) {
-         
          window.location.href = `/guru/siswa/${id}/progress/view`;
       }
 
@@ -1206,9 +1832,6 @@ function editMateriModal(materi) {
          }
       }
 
-      
-      
-      
       async function logout() {
          try {
             await apiCall('/auth/logout', { method: 'POST' });

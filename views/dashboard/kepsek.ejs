@@ -158,6 +158,7 @@
          cursor: pointer;
          font-weight: 600;
          transition: transform 0.2s;
+         margin: 5px;
       }
 
       .btn:hover {
@@ -170,6 +171,10 @@
 
       .btn-success {
          background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+      }
+
+      .btn-warning {
+         background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
       }
 
       .table {
@@ -205,18 +210,6 @@
          padding: 0.25rem 0.5rem;
          border-radius: 15px;
          font-size: 0.8rem;
-      }
-
-      .chart-container {
-         width: 100%;
-         height: 300px;
-         background: white;
-         border-radius: 10px;
-         padding: 1rem;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: #666;
       }
 
       .alert {
@@ -255,7 +248,7 @@
          background: white;
          border-radius: 10px;
          width: 90%;
-         max-width: 600px;
+         max-width: 800px;
          max-height: 80vh;
          overflow-y: auto;
          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -296,104 +289,157 @@
          padding: 1.5rem;
       }
 
-      .tugas-list {
-         display: flex;
-         flex-direction: column;
-         gap: 1rem;
+      /* Class-specific styles */
+      .kelas-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+         gap: 1.5rem;
+         margin-top: 1rem;
       }
 
-      .tugas-item {
-         background: #f8f9ff;
-         border: 1px solid #e1e5e9;
-         border-radius: 8px;
-         padding: 1rem;
+      .kelas-card {
+         background: white;
+         border-radius: 10px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+         padding: 1.5rem;
+         border-left: 4px solid #667eea;
       }
 
-      .tugas-info {
+      .kelas-header {
          display: flex;
          justify-content: space-between;
          align-items: center;
-         margin-bottom: 0.5rem;
+         margin-bottom: 1rem;
       }
 
-      .tugas-info h4 {
-         margin: 0;
+      .kelas-title {
          color: #333;
-         font-size: 1rem;
+         font-size: 1.2rem;
+         font-weight: 600;
       }
 
-      .status-badge {
-         padding: 0.25rem 0.75rem;
+      .kelas-tingkat {
+         background: #667eea;
+         color: white;
+         padding: 0.25rem 0.5rem;
          border-radius: 15px;
          font-size: 0.8rem;
-         font-weight: 600;
-         text-transform: capitalize;
       }
 
-      .status-belum_dikerjakan {
-         background: #ffeaa7;
-         color: #d63031;
+      .kelas-info {
+         margin-bottom: 1rem;
       }
 
-      .status-dikerjakan {
-         background: #74b9ff;
-         color: white;
+      .kelas-info p {
+         margin-bottom: 0.5rem;
+         color: #666;
       }
 
-      .status-selesai {
-         background: #00b894;
-         color: white;
+      .progress-indicator {
+         display: flex;
+         justify-content: space-between;
+         margin: 1rem 0;
       }
 
-      .tugas-nilai {
+      .progress-item {
+         text-align: center;
+         flex: 1;
+      }
+
+      .progress-item .number {
+         font-size: 1.5rem;
          font-weight: bold;
          color: #667eea;
-         margin-top: 0.5rem;
       }
 
-      .tugas-hasil {
+      .progress-item .label {
+         font-size: 0.8rem;
          color: #666;
-         font-style: italic;
-         margin-top: 0.25rem;
       }
 
-      .diskusi-list {
+      /* Activity timeline styles */
+      .activity-timeline {
+         max-height: 400px;
+         overflow-y: auto;
+      }
+
+      .activity-item {
          display: flex;
-         flex-direction: column;
-         gap: 1rem;
+         align-items: start;
+         margin-bottom: 1rem;
+         padding: 1rem;
+         background: #f8f9ff;
+         border-radius: 8px;
+         border-left: 3px solid #667eea;
       }
 
-      .diskusi-item {
+      .activity-icon {
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         background: #667eea;
+         color: white;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin-right: 1rem;
+         font-size: 0.9rem;
+      }
+
+      .activity-content {
+         flex: 1;
+      }
+
+      .activity-title {
+         font-weight: 600;
+         color: #333;
+         margin-bottom: 0.25rem;
+      }
+
+      .activity-description {
+         color: #666;
+         font-size: 0.9rem;
+         margin-bottom: 0.25rem;
+      }
+
+      .activity-time {
+         color: #888;
+         font-size: 0.8rem;
+      }
+
+      .siswa-progress-card {
          background: #f8f9ff;
          border: 1px solid #e1e5e9;
          border-radius: 8px;
          padding: 1rem;
+         margin-bottom: 1rem;
       }
 
-      .diskusi-header {
+      .progress-header {
          display: flex;
          justify-content: space-between;
          align-items: center;
          margin-bottom: 0.75rem;
       }
 
-      .diskusi-header strong {
-         color: #667eea;
-         font-size: 0.9rem;
-      }
-
-      .diskusi-date {
-         color: #666;
-         font-size: 0.8rem;
-      }
-
-      .diskusi-content {
+      .siswa-name {
+         font-weight: 600;
          color: #333;
-         line-height: 1.5;
-         background: white;
-         padding: 0.75rem;
-         border-radius: 5px;
-         border-left: 3px solid #667eea;
+      }
+
+      .progress-percentage {
+         color: #667eea;
+         font-weight: 600;
+      }
+
+      .guru-badge {
+         background: #27ae60;
+         color: white;
+         padding: 0.2rem 0.5rem;
+         border-radius: 12px;
+         font-size: 0.7rem;
+         margin: 0.2rem;
+         display: inline-block;
       }
 
       .connection-status {
@@ -438,6 +484,7 @@
    <div class="main-content">
       <div class="sidebar">
          <div class="nav-item active" onclick="showSection('dashboard')">📊 Dashboard</div>
+         <div class="nav-item" onclick="showSection('kelas-management')">🏫 Manajemen Kelas</div>
          <div class="nav-item" onclick="showSection('guru-management')">👨‍🏫 Manajemen Guru</div>
          <div class="nav-item" onclick="showSection('siswa-management')">👨‍🎓 Manajemen Siswa</div>
          <div class="nav-item" onclick="showSection('materi-management')">📚 Materi Pembelajaran</div>
@@ -450,6 +497,7 @@
             <span id="alertMessage"></span>
          </div>
 
+         <!-- Dashboard Section -->
          <div id="dashboard" class="page-section active">
             <h2>Ringkasan Sistem</h2>
 
@@ -473,13 +521,54 @@
             </div>
 
             <div class="card">
-               <div class="card-title">Aktivitas Pembelajaran</div>
-               <div class="chart-container">
-                  <p>Grafik aktivitas pembelajaran akan ditampilkan di sini</p>
+               <div class="card-title">Aktivitas Pembelajaran Terbaru</div>
+               <div id="activityTimeline" class="activity-timeline">
+                  <div class="activity-item">
+                     <div class="activity-icon">📊</div>
+                     <div class="activity-content">
+                        <div class="activity-title">Memuat aktivitas...</div>
+                        <div class="activity-description">Sedang mengambil data aktivitas terbaru</div>
+                        <div class="activity-time">-</div>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
 
+         <!-- Kelas Management Section -->
+         <div id="kelas-management" class="page-section">
+            <h2>Manajemen Kelas</h2>
+
+            <div class="card">
+               <div class="card-title">Tambah Kelas Baru</div>
+               <form id="addKelasForm">
+                  <div class="form-group">
+                     <label for="kelasNama">Nama Kelas</label>
+                     <input type="text" id="kelasNama" name="nama" placeholder="e.g., Kelas 1A" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="kelasTingkat">Tingkat</label>
+                     <input type="text" id="kelasTingkat" name="tingkat" placeholder="e.g., 1, 2, 3" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="kelasWali">Wali Kelas</label>
+                     <select id="kelasWali" name="wali_kelas_id" required>
+                        <option value="">-- Pilih Wali Kelas --</option>
+                     </select>
+                  </div>
+                  <button type="submit" class="btn">Tambah Kelas</button>
+               </form>
+            </div>
+
+            <div class="card">
+               <div class="card-title">Daftar Kelas</div>
+               <div id="kelasGrid" class="kelas-grid">
+                  <!-- Kelas cards will be loaded here -->
+               </div>
+            </div>
+         </div>
+
+         <!-- Guru Management Section -->
          <div id="guru-management" class="page-section">
             <h2>Manajemen Guru</h2>
 
@@ -524,26 +613,15 @@
             </div>
          </div>
 
+         <!-- Siswa Management Section -->
          <div id="siswa-management" class="page-section">
-            <h2>Manajemen Siswa</h2>
-
-            <div class="card">
-               <div class="card-title">Daftar Siswa</div>
-               <table class="table">
-                  <thead>
-                     <tr>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                     </tr>
-                  </thead>
-                  <tbody id="siswaTableBody">
-                  </tbody>
-               </table>
+            <h2>Manajemen Siswa per Kelas</h2>
+            <div id="siswaPerKelasContainer">
+               <!-- Content will be loaded here -->
             </div>
          </div>
 
+         <!-- Materi Management Section -->
          <div id="materi-management" class="page-section">
             <h2>Manajemen Materi</h2>
 
@@ -554,6 +632,7 @@
                      <tr>
                         <th>Judul Materi</th>
                         <th>Guru Pengampu</th>
+                        <th>Kelas</th>
                         <th>Tanggal Dibuat</th>
                         <th>Aksi</th>
                      </tr>
@@ -564,6 +643,7 @@
             </div>
          </div>
 
+         <!-- Diskusi Management Section -->
          <div id="diskusi-management" class="page-section">
             <h2>Manajemen Diskusi</h2>
 
@@ -572,7 +652,7 @@
                <form id="addDiskusiForm">
                   <div class="form-group">
                      <label for="diskusiKelas">Kelas</label>
-                     <input type="text" id="diskusiKelas" name="kelas" placeholder="e.g., Kelas 1" required>
+                     <input type="text" id="diskusiKelas" name="kelas" placeholder="e.g., Kelas 1A" required>
                   </div>
                   <div class="form-group">
                      <label for="diskusiIsi">Isi Diskusi</label>
@@ -589,6 +669,7 @@
                      <tr>
                         <th>Kelas</th>
                         <th>Isi</th>
+                        <th>Pengirim</th>
                         <th>Tanggal</th>
                      </tr>
                   </thead>
@@ -598,6 +679,7 @@
             </div>
          </div>
 
+         <!-- Chat Room Section -->
          <div id="chat-room" class="page-section">
             <h2>Ruang Diskusi Real-time</h2>
 
@@ -656,6 +738,9 @@
       let wsPort = 3001;
       let reconnectAttempts = 0;
       let connectionStatus = 'disconnected';
+      let kelasData = [];
+      let guruData = [];
+      let siswaPerKelasData = [];
 
       function updateConnectionStatus(status, message = '') {
          connectionStatus = status;
@@ -808,10 +893,12 @@
          document.getElementById(sectionId).classList.add('active');
          event.target.classList.add('active');
 
-         if (sectionId === 'guru-management') {
+         if (sectionId === 'kelas-management') {
+            loadKelasManagement();
+         } else if (sectionId === 'guru-management') {
             loadGuruList();
          } else if (sectionId === 'siswa-management') {
-            loadSiswaList();
+            loadSiswaPerKelas();
          } else if (sectionId === 'materi-management') {
             loadMateriList();
          } else if (sectionId === 'diskusi-management') {
@@ -951,19 +1038,167 @@
                const error = await response.text();
                showAlert('Error loading dashboard: ' + error, 'error');
             }
+
+            // Load learning activities
+            loadLearningActivities();
          } catch (error) {
             console.error('Error loading dashboard:', error);
             showAlert('Terjadi kesalahan saat memuat dashboard', 'error');
          }
       }
 
+      async function loadLearningActivities() {
+         try {
+            const response = await fetch('/kepsek/aktivitas-pembelajaran', {
+               method: 'GET',
+               credentials: 'include'
+            });
+
+            if (response.ok) {
+               const activities = await response.json();
+               displayActivityTimeline(activities.data);
+            }
+         } catch (error) {
+            console.error('Error loading activities:', error);
+         }
+      }
+
+      function displayActivityTimeline(activitiesData) {
+         const container = document.getElementById('activityTimeline');
+
+         if (!activitiesData.recent_activities || activitiesData.recent_activities.length === 0) {
+            container.innerHTML = `
+               <div class="activity-item">
+                  <div class="activity-icon">📝</div>
+                  <div class="activity-content">
+                     <div class="activity-title">Tidak ada aktivitas terbaru</div>
+                     <div class="activity-description">Belum ada aktivitas pembelajaran yang tercatat</div>
+                     <div class="activity-time">-</div>
+                  </div>
+               </div>
+            `;
+            return;
+         }
+
+         const getActivityIcon = (type) => {
+            switch (type) {
+               case 'materi': return '📚';
+               case 'tugas': return '📝';
+               case 'submission': return '📤';
+               case 'grade': return '🎯';
+               default: return '📊';
+            }
+         };
+
+         container.innerHTML = activitiesData.recent_activities.map(activity => `
+            <div class="activity-item">
+               <div class="activity-icon">${getActivityIcon(activity.type)}</div>
+               <div class="activity-content">
+                  <div class="activity-title">${activity.title}</div>
+                  <div class="activity-description">${activity.description}</div>
+                  <div class="activity-time">${new Date(activity.created_at).toLocaleString('id-ID')}</div>
+               </div>
+            </div>
+         `).join('');
+      }
+
       function updateStatistics() {
          if (dashboardData) {
-            document.getElementById('totalGuru').textContent = dashboardData.jumlah_guru || 0;
-            document.getElementById('totalSiswa').textContent = dashboardData.jumlah_siswa || 0;
-            document.getElementById('totalKelas').textContent = dashboardData.jumlah_kelas || 0;
-            document.getElementById('totalMateri').textContent = dashboardData.jumlah_materi || 0;
+            document.getElementById('totalGuru').textContent = dashboardData.data.jumlah_guru || 0;
+            document.getElementById('totalSiswa').textContent = dashboardData.data.jumlah_siswa || 0;
+            document.getElementById('totalKelas').textContent = dashboardData.data.jumlah_kelas || 0;
+            document.getElementById('totalMateri').textContent = dashboardData.data.jumlah_materi || 0;
          }
+      }
+
+      async function loadKelasManagement() {
+         try {
+            // Load available teachers for wali kelas dropdown
+            const guruResponse = await fetch('/kepsek/guru/daftar', {
+               method: 'GET',
+               credentials: 'include'
+            });
+
+            if (guruResponse.ok) {
+               const guruResult = await guruResponse.json();
+               const waliSelect = document.getElementById('kelasWali');
+               waliSelect.innerHTML = '<option value="">-- Pilih Wali Kelas --</option>';
+
+               guruResult.data.forEach(guru => {
+                  if (guru.status === 'active') {
+                     waliSelect.innerHTML += `<option value="${guru.id}">${guru.nama} (${guru.bidang})</option>`;
+                  }
+               });
+            }
+
+            // Load class list
+            const kelasResponse = await fetch('/kepsek/kelas/daftar', {
+               method: 'GET',
+               credentials: 'include'
+            });
+
+            if (kelasResponse.ok) {
+               const kelasResult = await kelasResponse.json();
+               kelasData = kelasResult.data;
+               displayKelasGrid();
+            }
+         } catch (error) {
+            console.error('Error loading kelas management:', error);
+            showAlert('Terjadi kesalahan saat memuat manajemen kelas', 'error');
+         }
+      }
+
+      function displayKelasGrid() {
+         const container = document.getElementById('kelasGrid');
+
+         if (kelasData.length === 0) {
+            container.innerHTML = `
+               <div style="text-align: center; padding: 2rem; color: #666;">
+                  <p>Belum ada kelas yang terdaftar</p>
+                  <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                     Tambahkan kelas baru menggunakan form di atas
+                  </p>
+               </div>
+            `;
+            return;
+         }
+
+         container.innerHTML = kelasData.map(kelas => `
+            <div class="kelas-card">
+               <div class="kelas-header">
+                  <div class="kelas-title">${kelas.nama}</div>
+                  <div class="kelas-tingkat">Tingkat ${kelas.tingkat}</div>
+               </div>
+               <div class="kelas-info">
+                  <p><strong>Wali Kelas:</strong> ${kelas.wali_kelas}</p>
+                  <p><strong>Jumlah Siswa:</strong> ${kelas.jumlah_siswa} orang</p>
+                  <p><strong>Guru Pengajar:</strong> ${kelas.jumlah_guru} guru</p>
+                  ${kelas.guru_list.length > 0 ? `
+                     <div style="margin-top: 0.5rem;">
+                        ${kelas.guru_list.map(guru =>
+            `<span class="guru-badge">${guru.nama} (${guru.bidang})</span>`
+         ).join('')}
+                     </div>
+                  ` : ''}
+               </div>
+               <div class="progress-indicator">
+                  <div class="progress-item">
+                     <div class="number">${kelas.jumlah_siswa}</div>
+                     <div class="label">Siswa</div>
+                  </div>
+                  <div class="progress-item">
+                     <div class="number">${kelas.jumlah_guru}</div>
+                     <div class="label">Guru</div>
+                  </div>
+               </div>
+               <div style="display: flex; gap: 5px; margin-top: 1rem;">
+                  <button class="btn" onclick="kelasDetail(${kelas.id})">Detail</button>
+                  <button class="btn btn-warning" onclick="editKelas(${kelas.id})">Edit</button>
+                  <button class="btn btn-success" onclick="manageGuruKelas(${kelas.id})">Guru</button>
+                  <button class="btn btn-danger" onclick="deleteKelas(${kelas.id})">Hapus</button>
+               </div>
+            </div>
+         `).join('');
       }
 
       async function loadGuruList() {
@@ -990,7 +1225,7 @@
          const tbody = document.getElementById('guruTableBody');
          tbody.innerHTML = '';
 
-         guruList.forEach(guru => {
+         (guruList.data).forEach(guru => {
             const row = document.createElement('tr');
             row.innerHTML = `
                <td>${guru.nama}</td>
@@ -1011,44 +1246,119 @@
          });
       }
 
-      async function loadSiswaList() {
+      async function loadSiswaPerKelas() {
+         const container = document.getElementById('siswaPerKelasContainer');
+         container.innerHTML = '<div style="text-align: center; padding: 2rem;">Memuat data siswa per kelas...</div>';
+
          try {
-            const response = await fetch('/kepsek/siswa/daftar', {
+            const response = await fetch('/kepsek/siswa/per-kelas', {
                method: 'GET',
                credentials: 'include'
             });
 
             if (response.ok) {
-               const siswaList = await response.json();
-               updateSiswaTable(siswaList);
+               const result = await response.json();
+               siswaPerKelasData = result.data;
+               displaySiswaPerKelas();
             } else {
-               const error = await response.text();
-               showAlert('Error loading siswa list: ' + error, 'error');
+               container.innerHTML = '<div style="text-align: center; padding: 2rem; color: #e74c3c;">Gagal memuat data siswa per kelas</div>';
             }
          } catch (error) {
-            console.error('Error loading siswa list:', error);
-            showAlert('Terjadi kesalahan saat memuat daftar siswa', 'error');
+            console.error('Error loading siswa per kelas:', error);
+            container.innerHTML = '<div style="text-align: center; padding: 2rem; color: #e74c3c;">Terjadi kesalahan saat memuat data</div>';
          }
       }
 
-      function updateSiswaTable(siswaList) {
-         const tbody = document.getElementById('siswaTableBody');
-         tbody.innerHTML = '';
+      function displaySiswaPerKelas() {
+         const container = document.getElementById('siswaPerKelasContainer');
 
-         siswaList.forEach(siswa => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-               <td>${siswa.nama}</td>
-               <td>${siswa.email}</td>
-               <td><span class="status-${siswa.status}">${siswa.status}</span></td>
-               <td>
-                  <button class="btn" onclick="lihatTugasSiswa(${siswa.id})">
-                     Lihat Tugas
-                  </button>
-               </td>
+         if (siswaPerKelasData.length === 0) {
+            container.innerHTML = `
+               <div style="text-align: center; padding: 2rem; color: #666;">
+                  <p>Belum ada data kelas dan siswa</p>
+               </div>
             `;
-            tbody.appendChild(row);
-         });
+            return;
+         }
+
+         container.innerHTML = siswaPerKelasData.map(kelasData => `
+            <div class="card">
+               <div class="card-title">
+                  ${kelasData.kelas.nama} - Tingkat ${kelasData.kelas.tingkat}
+                  <span style="float: right; font-size: 0.9rem; color: #666;">
+                     Wali: ${kelasData.kelas.wali_kelas}
+                  </span>
+               </div>
+               
+               <div style="margin-bottom: 1.5rem;">
+                  <h4 style="color: #667eea; margin-bottom: 0.5rem;">Guru Pengajar:</h4>
+                  <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                     ${kelasData.guru_pengajar.length > 0 ?
+               kelasData.guru_pengajar.map(guru =>
+                  `<span class="guru-badge">${guru.nama} - ${guru.mata_pelajaran} (${guru.bidang})</span>`
+               ).join('') :
+               '<span style="color: #666;">Belum ada guru yang ditugaskan</span>'
+            }
+                  </div>
+               </div>
+
+               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                  <div style="text-align: center; background: #f8f9ff; padding: 1rem; border-radius: 8px;">
+                     <div style="font-size: 2rem; font-weight: bold; color: #667eea;">${kelasData.statistik.total_siswa}</div>
+                     <div style="color: #666;">Total Siswa</div>
+                  </div>
+                  <div style="text-align: center; background: #f8f9ff; padding: 1rem; border-radius: 8px;">
+                     <div style="font-size: 2rem; font-weight: bold; color: #27ae60;">${kelasData.statistik.siswa_aktif}</div>
+                     <div style="color: #666;">Siswa Aktif</div>
+                  </div>
+                  <div style="text-align: center; background: #f8f9ff; padding: 1rem; border-radius: 8px;">
+                     <div style="font-size: 2rem; font-weight: bold; color: #f39c12;">${kelasData.statistik.avg_progress}%</div>
+                     <div style="color: #666;">Rata-rata Progress</div>
+                  </div>
+               </div>
+
+               <h4 style="color: #667eea; margin-bottom: 1rem;">Daftar Siswa:</h4>
+               <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
+                  ${kelasData.siswa_list.length > 0 ?
+               kelasData.siswa_list.map(siswa => `
+                        <div class="siswa-progress-card">
+                           <div class="progress-header">
+                              <span class="siswa-name">${siswa.nama}</span>
+                              <span class="progress-percentage">
+                                 ${siswa.progress_summary ? siswa.progress_summary.progress_tugas : 0}%
+                              </span>
+                           </div>
+                           <p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">
+                              ${siswa.email}
+                           </p>
+                           ${siswa.progress_summary ? `
+                              <p style="color: #888; font-size: 0.8rem; margin-bottom: 0.75rem;">
+                                 Tugas: ${siswa.progress_summary.tugas_dikerjakan}/${siswa.progress_summary.total_tugas} | 
+                                 Nilai: ${siswa.progress_summary.rata_nilai}
+                              </p>
+                           ` : '<p style="color: #888; font-size: 0.8rem;">Belum ada data progress</p>'}
+                           <div style="display: flex; gap: 5px;">
+                              <button class="btn" onclick="lihatProgressSiswa(${siswa.id}, ${kelasData.kelas.id})" 
+                                      style="font-size: 0.8rem; padding: 0.5rem 1rem;">
+                                 Detail Progress
+                              </button>
+                              <span class="status-${siswa.status}" style="font-size: 0.8rem; padding: 0.25rem 0.5rem;">
+                                 ${siswa.status}
+                              </span>
+                           </div>
+                        </div>
+                     `).join('') :
+               '<div style="color: #666; padding: 1rem; text-align: center;">Belum ada siswa di kelas ini</div>'
+            }
+               </div>
+               
+               <div style="margin-top: 1.5rem; display: flex; gap: 10px;">
+                  <button class="btn" onclick="tambahSiswaKeKelas(${kelasData.kelas.id})">Tambah Siswa</button>
+                  <button class="btn btn-success" onclick="manageGuruKelas(${kelasData.kelas.id})">Kelola Guru</button>
+                  <button class="btn btn-warning" onclick="kelasDetail(${kelasData.kelas.id})">Detail Kelas</button>
+               </div>
+            </div>
+         `).join('');
       }
 
       async function loadMateriList() {
@@ -1076,7 +1386,7 @@
          const tbody = document.getElementById('materiTableBody');
          tbody.innerHTML = '';
 
-         materiList.forEach(materi => {
+         (materiList.data).forEach(materi => {
             const row = document.createElement('tr');
             row.innerHTML = `
                <td>${materi.judul}</td>
@@ -1116,7 +1426,7 @@
          const tbody = document.getElementById('diskusiTableBody');
          tbody.innerHTML = '';
 
-         diskusiList.forEach(diskusi => {
+         (diskusiList.data).forEach(diskusi => {
             const row = document.createElement('tr');
             row.innerHTML = `
                <td>${diskusi.kelas}</td>
@@ -1127,6 +1437,47 @@
          });
       }
 
+      // form submissions
+      document.addEventListener('DOMContentLoaded', function () {
+         // add kelas form
+         document.getElementById('addKelasForm').addEventListener('submit', async function (e) {
+            e.preventDefault()
+
+            const formData = new FormData(this)
+            const kelasData = {
+               nama: formData.get('nama'),
+               tingkat: formData.get('tingkat'),
+               wali_kelas_id: formData.get('wali_kelas_id')
+            }
+
+            try {
+               const response = await fetch('/kepsek/kelas/tambah', {
+                  method: 'POST',
+                  headers: {
+                     'Content-Type': 'application/json'
+                  },
+                  credentials: 'include',
+                  body: JSON.stringify(kelasData)
+               });
+
+               if (response.ok) {
+                  const result = await response.json();
+                  showAlert('Kelas berhasil ditambahkan!');
+                  this.reset();
+                  loadKelasManagement();
+                  loadDashboardData();
+               } else {
+                  const error = await response.json();
+                  showAlert('Error: ' + error.error, 'error');
+               }
+            } catch (error) {
+               console.error('Error adding kelas:', error);
+               showAlert('Terjadi kesalahan saat menambah kelas', 'error');
+            }
+         })
+      })
+
+      // add guru form
       document.getElementById('addGuruForm').addEventListener('submit', async function (e) {
          e.preventDefault();
 
@@ -1164,6 +1515,7 @@
          }
       });
 
+      // add diskusi form
       document.getElementById('addDiskusiForm').addEventListener('submit', async function (e) {
          e.preventDefault();
 
@@ -1197,6 +1549,232 @@
             showAlert('Terjadi kesalahan saat menambah diskusi', 'error');
          }
       });
+
+      async function kelasDetail(kelasId) {
+         try {
+            const response = await fetch(`/kepsek/kelas/${kelasId}/detail`, {
+               method: 'GET',
+               credentials: 'include'
+            });
+
+            if (response.ok) {
+               const result = await response.json();
+               showKelasDetailModal(result.data);
+            } else {
+               const error = await response.json();
+               showAlert('Error: ' + error.error, 'error');
+            }
+         } catch (error) {
+            console.error('Error loading kelas detail:', error);
+            showAlert('Terjadi kesalahan saat memuat detail kelas', 'error');
+         }
+      }
+
+      function showKelasDetailModal(kelasData) {
+         const modal = document.createElement('div');
+         modal.className = 'modal-overlay';
+         modal.innerHTML = `
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h3>Detail ${kelasData.kelas.nama}</h3>
+                  <button class="modal-close" onclick="closeModal()">&times;</button>
+               </div>
+               <div class="modal-body">
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                     <div style="text-align: center; background: #f8f9ff; padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #667eea;">${kelasData.statistik.total_siswa}</div>
+                        <div style="color: #666;">Total Siswa</div>
+                     </div>
+                     <div style="text-align: center; background: #f8f9ff; padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #27ae60;">${kelasData.statistik.total_materi}</div>
+                        <div style="color: #666;">Total Materi</div>
+                     </div>
+                     <div style="text-align: center; background: #f8f9ff; padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #f39c12;">${kelasData.statistik.total_tugas}</div>
+                        <div style="color: #666;">Total Tugas</div>
+                     </div>
+                     <div style="text-align: center; background: #f8f9ff; padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #e74c3c;">${kelasData.statistik.avg_nilai}</div>
+                        <div style="color: #666;">Rata-rata Nilai</div>
+                     </div>
+                  </div>
+
+                  <h4 style="color: #667eea; margin-bottom: 1rem;">Guru Pengajar:</h4>
+                  <div style="margin-bottom: 1.5rem;">
+                     ${kelasData.guru.length > 0 ?
+               kelasData.guru.map(guru =>
+                  `<span class="guru-badge">${guru.nama} - ${guru.mata_pelajaran || 'Tidak ditentukan'} (${guru.bidang || 'Tidak ditentukan'})</span>`
+               ).join('') :
+               '<p style="color: #666;">Belum ada guru yang ditugaskan</p>'
+            }
+                  </div>
+
+                  <h4 style="color: #667eea; margin-bottom: 1rem;">Daftar Siswa:</h4>
+                  <div style="max-height: 300px; overflow-y: auto;">
+                     ${kelasData.siswa.length > 0 ?
+               kelasData.siswa.map(siswa => `
+                           <div style="background: #f8f9ff; padding: 1rem; margin-bottom: 0.5rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                              <div>
+                                 <strong>${siswa.nama}</strong><br>
+                                 <small style="color: #666;">${siswa.email}</small>
+                              </div>
+                              <div>
+                                 <span class="status-${siswa.status}">${siswa.status}</span>
+                              </div>
+                           </div>
+                        `).join('') :
+               '<p style="color: #666;">Belum ada siswa di kelas ini</p>'
+            }
+                  </div>
+               </div>
+            </div>
+         `;
+         document.body.appendChild(modal);
+      }
+
+      async function editKelas(kelasId) {
+         const kelas = kelasData.find(k => k.id === kelasId);
+         if (!kelas) return;
+
+         const newNama = prompt('Edit Nama Kelas:', kelas.nama);
+         if (!newNama) return;
+
+         const newTingkat = prompt('Edit Tingkat:', kelas.tingkat);
+         if (!newTingkat) return;
+
+         try {
+            const response = await fetch(`/kepsek/kelas/${kelasId}`, {
+               method: 'PUT',
+               headers: {
+                  'Content-Type': 'application/json'
+               },
+               credentials: 'include',
+               body: JSON.stringify({
+                  nama: newNama.trim(),
+                  tingkat: newTingkat.trim()
+               })
+            });
+
+            if (response.ok) {
+               showAlert('Kelas berhasil diupdate!');
+               loadKelasManagement();
+            } else {
+               const error = await response.json();
+               showAlert('Error: ' + error.error, 'error');
+            }
+         } catch (error) {
+            console.error('Error updating kelas:', error);
+            showAlert('Terjadi kesalahan saat mengupdate kelas', 'error');
+         }
+      }
+
+      async function deleteKelas(kelasId) {
+         if (!confirm('Yakin ingin menghapus kelas ini? Semua data terkait akan dihapus.')) return
+
+         try {
+            const response = await fetch(`/kepsek/kelas/${kelasId}`, {
+               method: 'DELETE',
+               credentials: 'include'
+            });
+
+            if (response.ok) {
+               showAlert('Kelas berhasil dihapus!');
+               loadKelasManagement();
+               loadDashboardData();
+            } else {
+               const error = await response.json();
+               showAlert('Error: ' + error.error, 'error');
+            }
+         } catch (error) {
+            console.error('Error deleting kelas:', error);
+            showAlert('Terjadi kesalahan saat menghapus kelas', 'error');
+         }
+      }
+
+      function manageGuruKelas(kelasId) {
+         showAlert('Fitur kelola guru kelas akan segera tersedia')
+      }
+
+      function tambahSiswaKeKelas(kelasId) {
+         showAlert('Fitur tambah siswa ke kelas akan segera tersedia')
+      }
+
+      async function lihatProgressSiswa(siswaId, kelasId) {
+         try {
+            const response = await fetch(`/kepsek/siswa/${siswaId}/progress/${kelasId}`, {
+               method: 'GET',
+               credentials: 'include'
+            });
+
+            if (response.ok) {
+               const result = await response.json();
+               showProgressDetailModal(result.data);
+            } else {
+               const error = await response.json();
+               showAlert('Error: ' + error.error, 'error');
+            }
+         } catch (error) {
+            console.error('Error loading progress detail:', error);
+            showAlert('Terjadi kesalahan saat memuat detail progress', 'error');
+         }
+      }
+
+      function showProgressDetailModal(progressData) {
+         const modal = document.createElement('div');
+         modal.className = 'modal-overlay';
+         modal.innerHTML = `
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h3>Progress Detail: ${progressData.siswa.nama}</h3>
+                  <button class="modal-close" onclick="closeModal()">&times;</button>
+               </div>
+               <div class="modal-body">
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                     <div style="text-align: center; background: #f8f9ff; padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">${progressData.progress.progress_materi}%</div>
+                        <div style="color: #666;">Progress Materi</div>
+                     </div>
+                     <div style="text-align: center; background: #f8f9ff; padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: #27ae60;">${progressData.progress.progress_tugas}%</div>
+                        <div style="color: #666;">Progress Tugas</div>
+                     </div>
+                     <div style="text-align: center; background: #f8f9ff; padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: #f39c12;">${progressData.progress.rata_nilai}</div>
+                        <div style="color: #666;">Rata-rata Nilai</div>
+                     </div>
+                  </div>
+
+                  <h4 style="color: #667eea; margin-bottom: 1rem;">Detail Tugas:</h4>
+                  <div style="max-height: 400px; overflow-y: auto;">
+                     ${progressData.detail_tugas.length > 0 ?
+               progressData.detail_tugas.map(tugas => `
+                           <div style="background: #f8f9ff; padding: 1rem; margin-bottom: 0.5rem; border-radius: 8px;">
+                              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                 <strong>${tugas.judul}</strong>
+                                 <span class="tugas-status status-${tugas.status}">${tugas.status.replace('_', ' ')}</span>
+                              </div>
+                              <p style="color: #666; font-size: 0.9rem;">Materi: ${tugas.materi}</p>
+                              ${tugas.nilai !== null ?
+                     `<p style="color: #27ae60; font-weight: bold;">Nilai: ${tugas.nilai}/100</p>` :
+                     '<p style="color: #e74c3c;">Belum dinilai</p>'
+                  }
+                              ${tugas.feedback ?
+                     `<p style="color: #666; font-style: italic; font-size: 0.9rem;">Feedback: ${tugas.feedback}</p>` :
+                     ''
+                  }
+                              <p style="color: #888; font-size: 0.8rem;">
+                                 Deadline: ${new Date(tugas.deadline).toLocaleDateString('id-ID')}
+                              </p>
+                           </div>
+                        `).join('') :
+               '<p style="color: #666;">Belum ada tugas untuk siswa ini</p>'
+            }
+                  </div>
+               </div>
+            </div>
+         `;
+         document.body.appendChild(modal);
+      }
 
       async function toggleUserStatus(userId, newStatus) {
          try {
@@ -1259,7 +1837,7 @@
             if (response.ok) {
                const tugasList = await response.json();
                let tugasHtml = 'Daftar Tugas:\n\n';
-               tugasList.forEach(tugas => {
+               (tugasList.data).forEach(tugas => {
                   tugasHtml += `• ${tugas.materi}: ${tugas.status}`;
                   if (tugas.nilai) tugasHtml += ` (Nilai: ${tugas.nilai})`;
                   tugasHtml += '\n';
@@ -1285,9 +1863,9 @@
             if (response.ok) {
                const diskusiList = await response.json();
                let diskusiHtml = 'Diskusi Materi:\n\n';
-               diskusiList.forEach(diskusi => {
-                  diskusiHtml += `${diskusi.user} (${diskusi.role}): ${diskusi.isi}\n(${new Date(diskusi.created_at).toLocaleDateString()})\n\n`;
-               });
+               (diskusiList.data).forEach(diskusi => {
+                  diskusiHtml += `${diskusi.user} (${diskusi.role}): ${diskusi.isi}\n(${new Date(diskusi.created_at).toLocaleDateString()}\n\n`;
+               })
                alert(diskusiHtml || 'Belum ada diskusi untuk materi ini.');
             } else {
                const error = await response.text();
@@ -1296,6 +1874,13 @@
          } catch (error) {
             console.error('Error loading diskusi materi:', error);
             showAlert('Terjadi kesalahan saat memuat diskusi materi', 'error');
+         }
+      }
+
+      function closeModal() {
+         const modal = document.querySelector('.modal-overlay');
+         if (modal) {
+            modal.remove();
          }
       }
 

@@ -1,10 +1,26 @@
 {
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "test": "bun test",
+    "test:unit": "bun test tests/unit/",
+    "test:integration": "bun test tests/integration/",
+    "test:performance": "bun test tests/performance/",
+    "test:watch": "bun test --watch",
+    "test:coverage": "bun test --coverage",
+    "test:auth": "bun test tests/integration/auth-routes.test.ts",
+    "test:kepsek": "bun test tests/integration/kepsek-routes.test.ts",
+    "test:guru": "bun test tests/integration/guru-routes.test.ts",
+    "test:siswa": "bun test tests/integration/siswa-routes.test.ts",
+    "test:dashboard": "bun test tests/integration/dashboard-routes.test.ts"
+  },
   "dependencies": {
     "@elysiajs/cookie": "^0.8.0",
     "@elysiajs/cors": "^1.3.3",
     "bcryptjs": "^3.0.2",
+    "dotenv": "^17.2.2",
     "ejs": "^3.1.10",
     "elysia": "^1.3.21",
+    "mysql2": "^3.15.1",
     "zod": "^4.1.5"
   }
 }

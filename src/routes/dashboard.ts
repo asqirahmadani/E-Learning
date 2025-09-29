@@ -1,7 +1,7 @@
 import { Elysia } from "elysia";
 import ejs from "ejs";
 import { authMiddleware } from "../middleware/auth";
-import { users } from "../db";
+import { getUserById } from "../db";
 
 const render = async (file: string, data: Record<string, any> = {}) => {
   const tpl = await Bun.file(file).text();
@@ -10,45 +10,43 @@ const render = async (file: string, data: Record<string, any> = {}) => {
 
 export const dashboardRoutes = new Elysia()
   .derive(authMiddleware as any)
-  
+
   .get("/dashboard", async ({ set, user }) => {
     if (!user) {
       set.status = 302;
       set.headers.Location = "/login?error=Silakan login terlebih dahulu";
       return;
     }
-    
+
     set.headers["Content-Type"] = "text/html; charset=utf-8";
-    
+
     try {
-      
-      const userData = users.find(u => u.id === user.userId);
-      
+      const userData = await getUserById(user.id)
+
       if (!userData) {
         set.status = 302;
         set.headers.Location = "/login?error=Data user tidak ditemukan";
         return;
       }
-      
+
       const userWithData = {
         userId: userData.id,
         nama: userData.nama,
         email: userData.email,
         role: userData.role,
-        bidang: userData.bidang,
-        kelas_id: userData.kelas_id
+        bidang: userData.bidang
       };
-      
+
       if (user.role === "kepsek") {
         return render("views/dashboard/kepsek.ejs", { user: userWithData });
       }
-      
+
       if (user.role === "guru") {
         return render("views/dashboard/guru.ejs", { user: userWithData });
       }
-      
+
       return render("views/dashboard/siswa.ejs", { user: userWithData });
-      
+
     } catch (error) {
       console.error("Error loading dashboard:", error);
       set.status = 302;
@@ -56,35 +54,35 @@ export const dashboardRoutes = new Elysia()
       return;
     }
   })
-  
+
   .get("/guru/siswa/:id/progress/view", async ({ set, params, user, cookie }) => {
-    if (!user || !user.userId) {
+    if (!user || !user.id) {
       set.status = 302;
       set.headers.Location = "/login?error=Silakan login terlebih dahulu";
       return;
     }
-    
+
     if (user.role !== "guru") {
       set.status = 302;
       set.headers.Location = "/dashboard?error=Akses ditolak. Hanya guru yang dapat mengakses halaman ini.";
       return;
     }
-    
+
     set.headers["Content-Type"] = "text/html; charset=utf-8";
-    
+
     try {
       const response = await fetch(`http://localhost:${process.env.PORT || 3000}/guru/siswa/${params.id}/progress`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
-          'Cookie': `session=${cookie.session.value}` 
+          'Cookie': `session=${cookie.session.value}`
         },
         credentials: 'include'
       });
-      
+
       let progressData = null;
       let error = null;
-      
+
       if (response.ok) {
         const result = await response.json();
         if (result.success) {
@@ -95,8 +93,8 @@ export const dashboardRoutes = new Elysia()
       } else {
         error = await response.text();
       }
-      
-      return render("views/dashboard/siswa-progress.ejs", { 
+
+      return render("views/dashboard/siswa-progress.ejs", {
         user,
         siswaId: params.id,
         progressData: progressData,
@@ -104,7 +102,7 @@ export const dashboardRoutes = new Elysia()
       });
     } catch (error) {
       console.error('Error loading progress data:', error);
-      return render("views/dashboard/siswa-progress.ejs", { 
+      return render("views/dashboard/siswa-progress.ejs", {
         user,
         siswaId: params.id,
         progressData: null,

@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Daftar - E-Learning</title>
+   <title>Daftar Guru - E-Learning</title>
    <style>
       * {
          margin: 0;
@@ -14,7 +14,7 @@
 
       body {
          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+         background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
          min-height: 100vh;
          display: flex;
          justify-content: center;
@@ -28,7 +28,9 @@
          border-radius: 10px;
          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
          width: 100%;
-         max-width: 450px;
+         max-width: 500px;
+         max-height: 90vh;
+         overflow-y: auto;
       }
 
       .logo {
@@ -58,10 +60,15 @@
          font-weight: 500;
       }
 
+      .required {
+         color: #e74c3c;
+      }
+
       input[type="text"],
       input[type="email"],
       input[type="password"],
-      select {
+      select,
+      textarea {
          width: 100%;
          padding: 0.75rem;
          border: 2px solid #e1e5e9;
@@ -73,15 +80,52 @@
       input[type="text"]:focus,
       input[type="email"]:focus,
       input[type="password"]:focus,
-      select:focus {
+      select:focus,
+      textarea:focus {
          outline: none;
-         border-color: #667eea;
+         border-color: #2ecc71;
+      }
+
+      .kelas-selection {
+         max-height: 150px;
+         overflow-y: auto;
+         border: 2px solid #e1e5e9;
+         border-radius: 5px;
+         padding: 0.5rem;
+         background: #f8f9fa;
+      }
+
+      .kelas-item {
+         display: flex;
+         align-items: center;
+         padding: 0.5rem;
+         margin-bottom: 0.25rem;
+         background: white;
+         border-radius: 3px;
+         cursor: pointer;
+         transition: background-color 0.3s;
+      }
+
+      .kelas-item:hover {
+         background: #e8f5e8;
+      }
+
+      .kelas-item input[type="checkbox"] {
+         width: auto;
+         margin-right: 0.75rem;
+         transform: scale(1.2);
+      }
+
+      .kelas-item label {
+         margin: 0;
+         cursor: pointer;
+         flex: 1;
       }
 
       .btn {
          width: 100%;
          padding: 0.75rem;
-         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+         background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
          color: white;
          border: none;
          border-radius: 5px;
@@ -109,7 +153,7 @@
       }
 
       .login-link a {
-         color: #667eea;
+         color: #2ecc71;
          text-decoration: none;
          font-weight: 500;
       }
@@ -186,6 +230,20 @@
          margin-top: 0.25rem;
          font-style: italic;
       }
+
+      .section-title {
+         color: #2ecc71;
+         font-size: 1.1rem;
+         margin-bottom: 1rem;
+         padding-bottom: 0.5rem;
+         border-bottom: 2px solid #e1e5e9;
+      }
+
+      .checkbox-note {
+         font-size: 0.8rem;
+         color: #666;
+         margin-bottom: 0.5rem;
+      }
    </style>
 </head>
 
@@ -193,34 +251,47 @@
    <div class="container">
       <div class="logo">
          <h1>E-Learning</h1>
-         <p>Buat akun siswa baru</p>
+         <p>Daftar sebagai Guru</p>
       </div>
 
-      <form id="registerForm">
+      <form id="registerGuruForm">
+         <div class="section-title">Informasi Pribadi</div>
+
          <div class="form-group">
-            <label for="nama">Nama Lengkap:</label>
+            <label for="nama">Nama Lengkap <span class="required">*</span></label>
             <input type="text" id="nama" name="nama" required>
             <div class="error" id="namaError"></div>
          </div>
 
          <div class="form-group">
-            <label for="email">Email:</label>
+            <label for="email">Email <span class="required">*</span></label>
             <input type="email" id="email" name="email" required>
             <div class="error" id="emailError"></div>
          </div>
 
          <div class="form-group">
-            <label for="kelas_id">Pilih Kelas:</label>
-            <select id="kelas_id" name="kelas_id" required>
-               <option value="">-- Pilih Kelas --</option>
-
+            <label for="bidang">Bidang Keahlian <span class="required">*</span></label>
+            <select id="bidang" name="bidang" required>
+               <option value="">-- Pilih Bidang --</option>
+               <option value="Matematika">Matematika</option>
+               <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+               <option value="Bahasa Inggris">Bahasa Inggris</option>
+               <option value="IPA">IPA (Ilmu Pengetahuan Alam)</option>
+               <option value="IPS">IPS (Ilmu Pengetahuan Sosial)</option>
+               <option value="PKN">PKN (Pendidikan Kewarganegaraan)</option>
+               <option value="Seni Budaya">Seni Budaya</option>
+               <option value="Pendidikan Jasmani">Pendidikan Jasmani</option>
+               <option value="TIK">TIK (Teknologi Informasi)</option>
+               <option value="Agama">Pendidikan Agama</option>
+               <option value="Lainnya">Lainnya</option>
             </select>
-            <div class="form-note">Silakan pilih kelas yang sesuai</div>
-            <div class="error" id="kelasError"></div>
+            <div class="error" id="bidangError"></div>
          </div>
 
+         <div class="section-title">Pengaturan Akun</div>
+
          <div class="form-group">
-            <label for="password">Password:</label>
+            <label for="password">Password <span class="required">*</span></label>
             <input type="password" id="password" name="password" required>
             <div class="password-requirements">
                <p>Password harus memenuhi syarat:</p>
@@ -235,13 +306,36 @@
          </div>
 
          <div class="form-group">
-            <label for="confirmPassword">Konfirmasi Password:</label>
+            <label for="confirmPassword">Konfirmasi Password <span class="required">*</span></label>
             <input type="password" id="confirmPassword" name="confirmPassword" required>
             <div class="error" id="confirmPasswordError"></div>
          </div>
 
+         <div class="section-title">Penugasan Kelas (Opsional)</div>
+
+         <div class="form-group">
+            <label>Kelas yang Akan Diampu</label>
+            <div class="checkbox-note">Pilih kelas yang akan Anda ajar (bisa lebih dari satu)</div>
+            <div class="kelas-selection" id="kelasSelection">
+               <div style="text-align: center; padding: 1rem; color: #666;">
+                  Memuat data kelas...
+               </div>
+            </div>
+            <div class="form-note">Anda dapat mengubah penugasan kelas nanti melalui admin</div>
+            <div class="error" id="kelasError"></div>
+         </div>
+
+         <div class="form-group">
+            <label for="wali_kelas_id">Wali Kelas (Opsional)</label>
+            <select id="wali_kelas_id" name="wali_kelas_id">
+               <option value="">-- Tidak menjadi wali kelas --</option>
+            </select>
+            <div class="form-note">Pilih jika Anda akan menjadi wali kelas</div>
+            <div class="error" id="waliKelasError"></div>
+         </div>
+
          <button type="submit" class="btn" id="submitBtn">
-            <span id="submitText">Daftar</span>
+            <span id="submitText">Daftar sebagai Guru</span>
             <span id="loadingSpinner" class="loading" style="display: none;"></span>
          </button>
 
@@ -251,15 +345,14 @@
 
       <div class="login-link">
          <p>Sudah punya akun? <a href="/login">Masuk di sini</a></p>
-         <p>Atau ingin daftar sebagai <a href="/register-guru">guru</a>?</p>
+         <p>Atau daftar sebagai <a href="/register">siswa</a></p>
       </div>
    </div>
 
    <script>
-
       let kelasData = [];
 
-
+      // Load kelas data from API
       async function loadKelasData() {
          try {
             const response = await fetch('/kelas');
@@ -267,7 +360,8 @@
                const result = await response.json();
                if (result.success) {
                   kelasData = result.data;
-                  populateKelasDropdown();
+                  populateKelasSelection();
+                  populateWaliKelasDropdown();
                } else {
                   showError('generalError', 'Gagal memuat data kelas');
                }
@@ -280,47 +374,76 @@
          }
       }
 
+      // Populate kelas selection checkboxes
+      function populateKelasSelection() {
+         const container = document.getElementById('kelasSelection');
 
-      function populateKelasDropdown() {
-         const select = document.getElementById('kelas_id');
-         select.innerHTML = '<option value="">-- Pilih Kelas --</option>';
+         if (kelasData.length === 0) {
+            container.innerHTML = '<div style="text-align: center; padding: 1rem; color: #666;">Belum ada kelas tersedia</div>';
+            return;
+         }
+
+         container.innerHTML = kelasData.map(kelas => `
+            <div class="kelas-item">
+               <input type="checkbox" id="kelas_${kelas.id}" name="kelas_ids" value="${kelas.id}">
+               <label for="kelas_${kelas.id}">
+                  ${kelas.nama} (Tingkat ${kelas.tingkat})
+               </label>
+            </div>
+         `).join('');
+
+         // Add click handlers for the entire kelas item
+         container.querySelectorAll('.kelas-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+               if (e.target.tagName !== 'INPUT') {
+                  const checkbox = this.querySelector('input[type="checkbox"]');
+                  checkbox.checked = !checkbox.checked;
+               }
+            });
+         });
+      }
+
+      // Populate wali kelas dropdown
+      function populateWaliKelasDropdown() {
+         const select = document.getElementById('wali_kelas_id');
+         select.innerHTML = '<option value="">-- Tidak menjadi wali kelas --</option>';
 
          kelasData.forEach(kelas => {
             const option = document.createElement('option');
             option.value = kelas.id;
-            option.textContent = `${kelas.nama} (${kelas.tingkat})`;
+            option.textContent = `Wali Kelas ${kelas.nama} (${kelas.tingkat})`;
             select.appendChild(option);
          });
       }
 
-
+      // Show error message
       function showError(elementId, message) {
          const errorDiv = document.getElementById(elementId);
          errorDiv.textContent = message;
          errorDiv.style.display = 'block';
       }
 
-
+      // Hide error message
       function hideError(elementId) {
          const errorDiv = document.getElementById(elementId);
          errorDiv.style.display = 'none';
          errorDiv.textContent = '';
       }
 
-
+      // Show success message
       function showSuccess(message) {
          const successDiv = document.getElementById('generalSuccess');
          successDiv.textContent = message;
          successDiv.style.display = 'block';
       }
 
-
+      // Email validation
       function isValidEmail(email) {
          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
          return emailRegex.test(email);
       }
 
-
+      // Password validation
       function validatePassword(password) {
          const errors = [];
 
@@ -340,20 +463,20 @@
          return errors;
       }
 
-
+      // Password requirements real-time validation
       document.getElementById('password').addEventListener('input', function () {
          const password = this.value;
          const errors = validatePassword(password);
 
-
+         // Update visual indicators
          document.getElementById('lengthReq').className = password.length >= 6 ? 'requirement-met' : 'requirement-not-met';
          document.getElementById('upperReq').className = /[A-Z]/.test(password) ? 'requirement-met' : 'requirement-not-met';
          document.getElementById('lowerReq').className = /[a-z]/.test(password) ? 'requirement-met' : 'requirement-not-met';
          document.getElementById('numberReq').className = /\d/.test(password) ? 'requirement-met' : 'requirement-not-met';
 
-
+         // Show/hide error message
          const errorDiv = document.getElementById('passwordError');
-         if (errors.length > 0) {
+         if (errors.length > 0 && password.length > 0) {
             errorDiv.textContent = errors.join(', ');
             errorDiv.style.display = 'block';
          } else {
@@ -361,7 +484,7 @@
          }
       });
 
-
+      // Confirm password validation
       document.getElementById('confirmPassword').addEventListener('input', function () {
          const password = document.getElementById('password').value;
          const confirmPassword = this.value;
@@ -375,22 +498,27 @@
          }
       });
 
-
-      document.getElementById('registerForm').addEventListener('submit', async function (e) {
+      // Form submission
+      document.getElementById('registerGuruForm').addEventListener('submit', async function (e) {
          e.preventDefault();
 
-
+         // Clear previous errors
          document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
          document.getElementById('generalSuccess').style.display = 'none';
 
-
+         // Get form data
          const nama = document.getElementById('nama').value.trim();
          const email = document.getElementById('email').value.trim();
-         const kelas_id = document.getElementById('kelas_id').value;
+         const bidang = document.getElementById('bidang').value;
          const password = document.getElementById('password').value;
          const confirmPassword = document.getElementById('confirmPassword').value;
+         const wali_kelas_id = document.getElementById('wali_kelas_id').value;
 
+         // Get selected classes
+         const selectedKelas = Array.from(document.querySelectorAll('input[name="kelas_ids"]:checked'))
+            .map(cb => cb.value);
 
+         // Form validation
          let isValid = true;
 
          if (!nama) {
@@ -406,8 +534,8 @@
             isValid = false;
          }
 
-         if (!kelas_id) {
-            showError('kelasError', 'Silakan pilih kelas');
+         if (!bidang) {
+            showError('bidangError', 'Pilih bidang keahlian');
             isValid = false;
          }
 
@@ -422,9 +550,15 @@
             isValid = false;
          }
 
+         // Validate wali kelas selection
+         if (wali_kelas_id && selectedKelas.length > 0 && !selectedKelas.includes(wali_kelas_id)) {
+            showError('waliKelasError', 'Wali kelas harus dipilih dari kelas yang Anda ampu');
+            isValid = false;
+         }
+
          if (!isValid) return;
 
-
+         // Show loading state
          const submitBtn = document.getElementById('submitBtn');
          const submitText = document.getElementById('submitText');
          const loadingSpinner = document.getElementById('loadingSpinner');
@@ -433,39 +567,49 @@
          submitText.textContent = 'Mendaftarkan...';
          loadingSpinner.style.display = 'inline-block';
 
-
+         // Prepare form data
          const formData = new FormData();
          formData.append('nama', nama);
          formData.append('email', email);
-         formData.append('kelas_id', kelas_id);
+         formData.append('bidang', bidang);
          formData.append('password', password);
          formData.append('confirmPassword', confirmPassword);
 
+         // Add selected classes
+         selectedKelas.forEach(kelasId => {
+            formData.append('kelas_ids', kelasId);
+         });
+
+         if (wali_kelas_id) {
+            formData.append('wali_kelas_id', wali_kelas_id);
+         }
+
          try {
-            const response = await fetch('/register', {
+            const response = await fetch('/register-guru', {
                method: 'POST',
                body: formData
             });
 
-            const result = await response.text();
+            if (response.ok || response.status === 302) {
+               showSuccess('Registrasi guru berhasil! Mengarahkan ke halaman login...');
 
-            if (response.ok) {
-               showSuccess('Registrasi berhasil! Mengarahkan ke halaman login...');
-
-
+               // Reset form
                this.reset();
-
-
                document.querySelectorAll('.requirement-met').forEach(el => {
                   el.className = 'requirement-not-met';
                });
 
+               // Clear kelas selections
+               document.querySelectorAll('input[name="kelas_ids"]').forEach(cb => {
+                  cb.checked = false;
+               });
 
+               // Redirect after success
                setTimeout(() => {
-                  window.location.href = '/login?message=' + encodeURIComponent('Registrasi berhasil. Silakan login.');
+                  window.location.href = '/login?message=' + encodeURIComponent('Registrasi guru berhasil. Silakan login.');
                }, 2000);
             } else {
-
+               const result = await response.text();
                try {
                   const errorData = JSON.parse(result);
                   showError('generalError', errorData.error || errorData.message || 'Terjadi kesalahan');
@@ -477,18 +621,18 @@
             console.error('Registration error:', error);
             showError('generalError', 'Terjadi kesalahan jaringan. Silakan coba lagi.');
          } finally {
-
+            // Reset loading state
             submitBtn.disabled = false;
-            submitText.textContent = 'Daftar';
+            submitText.textContent = 'Daftar sebagai Guru';
             loadingSpinner.style.display = 'none';
          }
       });
 
-
+      // Initialize on page load
       document.addEventListener('DOMContentLoaded', function () {
          loadKelasData();
 
-
+         // Handle URL parameters for form restoration and error display
          const urlParams = new URLSearchParams(window.location.search);
          const error = urlParams.get('error');
          const formData = urlParams.get('formData');
@@ -502,8 +646,21 @@
                const data = JSON.parse(decodeURIComponent(formData));
                document.getElementById('nama').value = data.nama || '';
                document.getElementById('email').value = data.email || '';
-               if (data.kelas_id) {
-                  document.getElementById('kelas_id').value = data.kelas_id;
+               document.getElementById('bidang').value = data.bidang || '';
+
+               // Restore class selections
+               if (data.kelas_ids) {
+                  const kelasIds = data.kelas_ids.split(',');
+                  setTimeout(() => {
+                     kelasIds.forEach(kelasId => {
+                        const checkbox = document.getElementById(`kelas_${kelasId.trim()}`);
+                        if (checkbox) checkbox.checked = true;
+                     });
+                  }, 100);
+               }
+
+               if (data.wali_kelas_id) {
+                  document.getElementById('wali_kelas_id').value = data.wali_kelas_id;
                }
             } catch (e) {
                console.error('Error parsing form data:', e);

@@ -1,6 +1,6 @@
 import type { Context } from "elysia";
 import { verifySession } from "../utils/session";
-import { users } from "../db";
+import { getUserById } from "../db";
 
 export async function authMiddleware({ cookie, set, request }: Context) {
   const token = cookie?.session?.value;
@@ -14,21 +14,21 @@ export async function authMiddleware({ cookie, set, request }: Context) {
     if (cookie?.session) cookie.session.set({ value: "", maxAge: 0 });
     return { user: null };
   }
-  
-  const userData = users.find(u => u.id === data.userId);
-  
+
+  const userData = await getUserById(data.userId)
+
   if (!userData) {
     if (cookie?.session) cookie.session.set({ value: "", maxAge: 0 });
     return { user: null };
   }
-  
-  return { 
+
+  return {
     user: {
-      userId: data.userId,
+      id: data.userId,
       nama: userData.nama,
       email: userData.email,
       role: data.role,
       bidang: userData.bidang
-    } 
+    }
   };
 }
